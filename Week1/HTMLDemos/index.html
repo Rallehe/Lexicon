@@ -1,28 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML Basics</title>
 </head>
+
 <body>
     <!--HTML Comment-->
+    <!--You can use multiple classes for elements but only one unique ID per element-->
 
-    100 <S>500</S>"S"<br>
-    100 <del>500</del>"del"<br>
-    Water: H<sub>2</sub>O<br>
-    Energy: E=mc<sup>2</sup><br>
-    Use "Strong" not "Bold", it helps with tts<br>
-    <Strong>Is strong looks bold</Strong><br>
-    Lets use the <mark style="background-color: blueviolet;">marker</mark><br>
-    <em>Some Italic text</em><br>
-    Id: &nbsp;&copy;101<br>
-    <pre>
-        ID: 111
-        Name:   EVERT
-        Age:        42
-    </pre><br>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, incidunt iusto, cumque, praesentium quaerat est tempore optio numquam sapiente quis perspiciatis ullam! Nisi sequi repellendus recusandae quos esse neque quidem, fugit voluptatem officiis nulla tenetur quaerat illo aliquid, labore ut laboriosam praesentium, exercitationem corporis quibusdam dolor alias nihil possimus autem aut! Corporis omnis soluta enim quis impedit iste repellendus, blanditiis cupiditate? Iusto eveniet animi veniam, atque ad dignissimos accusamus dolores officiis aliquam maxime ipsum ipsam autem quisquam sunt quis tenetur tempora in inventore libero molestias ullam! Facilis nihil quidem ea, maiores quia fugiat, aperiam rem fugit, expedita ullam excepturi quo!</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero maxime illum corrupti sunt commodi nihil?</p>
+    <header>
+        <h1>Header</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="about.html">About</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <div>
+        <!--target=_blank open new tab when clicking link-->
+        <a href="https://www.w3schools.com/html/default.asp" target="_blank">Learn HTML with W3schools</a><br>
+        <!--Go to element where id is headingDemo-->
+        <a href="#headingDemo">Heading demo</a>
+    </div><br>
+
+    <div>
+        Lists are of two types, ordered list and unordered list. Both lists have list element (li)
+
+        <!--ol = ordered list-->
+        <ol type="1" start="10">
+            Ordered list type (1, default. start 10)
+            <li>Sweden</li>
+            <li>Norway</li>
+        </ol>
+        <ol type="A">
+            Ordered list type (A)
+            <li>Sweden</li>
+            <li>Norway</li>
+        </ol>
+        <ol type="a" start="8">
+            Ordered list type (a, start 8 to start at 'h')
+            <li>Sweden</li>
+            <li>Norway</li>
+        </ol>
+        <ol type="I">
+            Ordered list type (I)
+            <li>Sweden</li>
+            <li>Norway</li>
+        </ol>
+        <ol type="i">
+            Ordered list type (i)
+            <li>Sweden</li>
+            <li>Norway</li>
+        </ol>
+
+        <!--ul = unordered list-->
+        <ul>
+            Unordered list
+            <li>Stockholm</li>
+            <li>Oslo</li>
+        </ul>
+
+        Nested list
+        <ol>
+            <li>
+                Sweden
+                <ul>
+                    <li>Stockholm</li>
+                    <li>Gothenburg</li>
+                    <li>Malmö</li>
+                </ul>
+            </li>
+            <li>
+                Norway
+                <ul>
+                    <li>Oslo</li>
+                    <li>Bergen</li>
+                    <li>Trondheim</li>
+                </ul>
+            </li>
+        </ol>
+
+    </div>
+
+    <div id="mainBody">
+        <p>Lorem, ipsum dolor.</p>
+        100 <S>500</S>"S"<br>
+        100 <del>500</del>"del"<br>
+        Water: H<sub>2</sub>O<br>
+        Energy: E=mc<sup>2</sup><br>
+        Use "Strong" not "Bold", it helps with tts<br>
+        <Strong>Is strong looks bold</Strong><br>
+        Lets use the <mark style="background-color: blueviolet;">marker</mark><br>
+        <em>Some Italic text</em><br>
+        Id: &nbsp;&copy;101<br>
+        <pre>
+                ID: 111
+                Name:   EVERT
+                Age:        42
+        </pre><br>
+
+        <div>
+            <img src="https://picsum.photos/200/300" alt="placeholder">
+        </div>
+
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, incidunt iusto, cumque, praesentium
+            quaerat est tempore optio numquam sapiente quis perspiciatis ullam! Nisi sequi repellendus recusandae quos
+            esse
+            neque quidem, fugit voluptatem officiis nulla tenetur quaerat illo aliquid, labore ut laboriosam
+            praesentium,
+            exercitationem corporis quibusdam dolor alias nihil possimus autem aut! Corporis omnis soluta enim quis
+            impedit
+            iste repellendus, blanditiis cupiditate? Iusto eveniet animi veniam, atque ad dignissimos accusamus dolores
+            officiis aliquam maxime ipsum ipsam autem quisquam sunt quis tenetur tempora in inventore libero molestias
+            ullam! Facilis nihil quidem ea, maiores quia fugiat, aperiam rem fugit, expedita ullam excepturi quo!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero maxime illum corrupti sunt commodi nihil?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sequi dolore totam eum asperiores
+            assumenda?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sequi dolore totam eum asperiores
+            assumenda?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sequi dolore totam eum asperiores
+            assumenda?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sequi dolore totam eum asperiores
+            assumenda?</p>
+        <div id="headingDemo">
+            <h1>This is H1</h1>
+            <h2>This is H2</h2>
+            <h3>This is H3</h3>
+            <h4>This is H4</h4>
+            <h5>This is H5</h5>
+            <h6>This is H6</h6>
+            <!--#top brings you to top of page-->
+            <a href="#top">Go to top</a>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sequi dolore totam eum asperiores
+            assumenda?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sequi dolore totam eum asperiores
+            assumenda?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sequi dolore totam eum asperiores
+            assumenda?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sequi dolore totam eum asperiores
+            assumenda?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sequi dolore totam eum asperiores
+            assumenda?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sequi dolore totam eum asperiores
+            assumenda?</p>
+
+    </div>
+
+    <footer>
+        <h3>Footer</h3>
+    </footer>
 </body>
+
 </html>
