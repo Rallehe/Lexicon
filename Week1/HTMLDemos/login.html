@@ -19,6 +19,90 @@
 
     <div id="mainBody">
         <h1>Login</h1>
+
+
+        <form method="post">
+            <div>
+                <label for="l9">Donald Duck</label>
+                <input id="l9" type="text" value="Donald Duck">
+            </div>
+
+            <div>
+                <label for="l8">Person number</label>
+                <input id="l8" type="text" placeholder="YYYYMMDD-XXXX">
+            </div>
+
+            <textarea rows="6" cols="40" id="applicationLetter"></textarea>
+
+            <div>
+                Select a country
+                <select name="" id="">
+                    <option value="">Sweden</option>
+                    <option value="">Norway</option>
+                    <option value="">Denmark</option>
+                </select>
+            </div>
+
+            <div>
+                Gender: <br>
+                <!--value will be submitted, the radio buttons belong to the same group 'name=gender'-->
+                <input name="gender" id="male" , value="Male" , type="radio">
+                <label for="male">Male</label> <br>
+
+                <input name="gender" id="female" , value="Female" , type="radio">
+                <label for="female">Female</label> <br>
+
+                <input name="gender" id="other" , value="Other" , type="radio">
+                <label for="other">Other</label> <br>
+            </div>
+            <div>
+                Skills: <br>
+                <!--value will be submitted-->
+                <label for="c">C</label>
+                <input name="skills" id="c" , value="C" , type="checkbox">
+
+                <label for="cpp">C++</label>
+                <input name="skills" id="cpp" , value="CPP" , type="checkbox">
+
+                <label for="c#">C#</label>
+                <input name="skills" id="c#" , value="C#" , type="checkbox">
+
+                <label for="java">Java</label>
+                <input name="skills" id="java" , value="Java" , type="checkbox">
+            </div>
+            <div>
+                <label for="l6">Date of birth</label>
+                <input id="l6" type="date">
+            </div>
+            <div>
+                <label for="l5">Favorite color</label>
+                <input id="l5" type="color">
+            </div>
+            <div>
+                <label for="l4">Upload file</label>
+                <input id="l4" type="file">
+            </div>
+            <div>
+                <label for="l3">Quantity</label>
+                <input id="l3" type="number" placeholder="Quantity">
+            </div>
+            <div>
+                <!--label is for element with id 'username'-->
+                <label for="username">Username</label>
+                <input id="username" type="text" placeholder="Username">
+            </div>
+            <div>
+                <!--label is for element with id 'password'-->
+                <label for="password">Password</label>
+                <input id="password" type="password" placeholder="Password">
+            </div>
+            <!--Buttons to submit the input data-->
+            <div>
+                <input type="submit" value="Register">
+                <input type="reset" value="Reset">
+                <button type="submit" disabled>Login</button>
+            </div>
+        </form>
     </div>
 
     <footer>
