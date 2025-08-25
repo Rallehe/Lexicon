@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Basics</title>
+</head>
+
+<body>
+    Data type: <span id="s1"></span><br>
+    Data type: <span id="s2"></span><br>
+    Data type: <span id="s3"></span><br>
+    Data type: <span id="s4"></span><br>
+    Data type: <span id="s5"></span><br>
+
+    <script>
+        let n1 = 5;
+        let n2 = 2;
+        let res = n1 * n2;
+        document.getElementById("s5").innerHTML = res + " : " + typeof(res); 
+    </script>
+
+    <script>
+        document.getElementById("s1").innerHTML = typeof(69420);
+        document.getElementById("s2").innerHTML = typeof("69420");
+        document.getElementById("s3").innerHTML = typeof(true);
+        let x;
+        document.getElementById("s4").innerHTML = typeof(x);
+        </script>
+
+    <p id="p1">Hello</p>
+    <p id="p2"></p>
+    <p id="p3"></p>
+    <script>    
+
+
+        let firstName = "Rasmus";
+        let lastName = "Hedin";
+
+        let numberOne = 42;
+        document.getElementById("p2").innerHTML = numberOne;
+        document.getElementById("p3").innerHTML = firstName;
+
+
+        console.log("Print to terminal");
+        document.write("Hello World!");
+        // Replace text "Hello" in p1 to "This is replaced text"
+        document.getElementById("p1").innerHTML = "This is replaced text";
+    </script>
+</body>
+
+</html>
