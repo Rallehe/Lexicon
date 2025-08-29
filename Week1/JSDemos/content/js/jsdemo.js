@@ -1,3 +1,5 @@
+let prompt = require('prompt-sync')();
+
 
 // let x = 100;
 
@@ -99,7 +101,7 @@
 // }
 
 
-let prompt = require('prompt-sync')();
+
 
 // let fullName = prompt('Enter full name: ');
 
@@ -204,3 +206,66 @@ let prompt = require('prompt-sync')();
 //     let newString = stringFirstThree.toLocaleLowerCase() + stringRestOfLetters;
 //     console.log(newString);
 // }
+
+
+// for (let i = 2; i <= 10 ; i++) {
+//     console.log(i ** 2);
+//     console.log(Math.pow(i, 2));
+// }
+
+
+// let input = 0;
+// for (let i = 0; i < 10 ; i++) {
+//     input += Number(prompt("Enter a number: "));
+// }
+// console.log(input);
+
+// Print first 20 prime number
+
+// let numberOfPrime = 1;
+// let number = 1;
+// while (numberOfPrime < 20) {
+//     if (number > 1) {
+//         let isPrime = true;
+
+//         for (let i = 2; i <= Math.sqrt(number); i++) {
+//             if (number % i === 0) {
+//                 isPrime = false;
+//                 break;
+//             }
+//         }
+
+//         if (isPrime) {
+//             console.log(`${number} is a prime number`);
+//             numberOfPrime++;
+//         }
+
+//     }
+//     number++;
+// }
+
+
+
+
+// Asking game, ask until correct answer
+
+// let guess;
+// let answer = 15;
+
+// while (guess !== answer) {
+//     guess = Number(prompt("Enter a number between 1-20: "))
+//     if (guess > 20) {
+//         console.log("That's too big");
+//     }
+//     guess === answer ? console.log("Correct!") : console.log("Try again!");
+// }
+
+
+// Ask for 10 numbers, print sum and avg number
+
+// let num = 0;
+// console.log("Enter a total of 10 numbers to see the sum and avg of those numbers\n")
+// for (let i = 0; i < 10; i++) {
+//     num += parseInt(prompt("Enter a number: "));
+// }
+// console.log(`Sum = ${num}. Avg = ${num/10}`);
