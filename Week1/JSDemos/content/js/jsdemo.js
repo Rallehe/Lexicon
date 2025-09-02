@@ -269,3 +269,31 @@ let prompt = require('prompt-sync')();
 //     num += parseInt(prompt("Enter a number: "));
 // }
 // console.log(`Sum = ${num}. Avg = ${num/10}`);
+
+
+
+
+// let number1 = Number(prompt("Enter a number: "));
+// let number2 = Number(prompt("Enter a number: "));
+
+// let op = prompt(" + - * / ");
+// let res;
+// switch (op) {
+//     case '+':
+//         res = number1 + number2;
+//         break;
+//     case '-':
+//         res = number1 - number2;
+//         break;
+//     case '*':
+//         res = number1 * number2;
+//         break;
+//     case '/':
+//         res = number1 / number2;
+//         break;
+//     default:
+//         console.log("Wrong");
+// }
+// console.log(res);
+
+
