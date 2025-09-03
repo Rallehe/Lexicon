@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More CSS</title>
+    <link rel="stylesheet" href="site.css">
+    <style>
+        .container {
+            display: flex;
+        }
+
+        .base-margin {
+            margin-top: 1%;
+        }
+
+        .box {
+            height: 150px;
+            background-color: aliceblue;
+            border: 2px solid red;
+            text-align: center;
+            overflow-y: scroll;
+        }
+
+        .box-small-width {
+            width: 25%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cssBasic.html">CSS Basics</a></li>
+                <li><a href="#">More CSS</a></li>
+                <li><a href="layout.html">Layout</a></li>
+                <li style="float: right;"><a href="#">Register</a></li>
+                <li style="float: right;"><a href="#">Sign in</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container base-margin">
+        <div class="box">
+            <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, saepe.</h3>
+        </div>
+        <div class="box">
+            <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, saepe.</h3>
+        </div>
+        <div class="box">
+            <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, saepe.</h3>
+        </div>
+
+    </div>
+    <div class="container base-margin">
+        <div class="box box-small-width">
+            <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, saepe.</h3>
+        </div>
+        <div class="box box-small-width">
+            <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, saepe.</h3>
+        </div>
+        <div class="box box-small-width">
+            <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, saepe.</h3>
+        </div>
+        <div class="box box-small-width">
+            <h3>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et ad cumque mollitia consequatur distinctio labore sunt? Tempore aperiam culpa aliquid ut eligendi cum iusto repellat voluptas ea ratione laudantium saepe, in facere voluptatibus dolore perspiciatis et rem quibusdam suscipit commodi eaque maxime. Necessitatibus et eum rerum, provident magni reprehenderit molestias!</h3>
+        </div>
+    </div>
+
+</body>
+
+</html>

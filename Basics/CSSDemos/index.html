@@ -5,37 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS Demo</title>
-    <link rel="stylesheet" href="site.css">
-    <style>
-        h1 {
-            background-color: rebeccapurple;
-        }
-        /* Use '#' for reference to id */
-        #p1 {
-            background-color: red;
-            color: black;
-        }
-        /* Use '.' for reference to class */
-        .bg-violet {
-            background-color: violet;
-        }
-    </style>
+    <link rel="stylesheet" href="layout.css">
 </head>
 
 <body>
     <header>
         <nav>
-            <a href="#">Home</a>
-            <a href="contact.html">Contact</a>
-            <a href="cssBasic.html"> CSS Basics</a>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cssBasic.html">CSS Basics</a></li>
+                <li><a href="moreCss.html">More CSS</a></li>
+                <li><a href="layout.html">Layout</a></li>
+                <li style="float: right;"><a href="#">Register</a></li>
+                <li style="float: right;"><a href="#">Sign in</a></li>
+            </ul>
         </nav>
+
     </header>
     <div>
-        <h1 class="bg-violet">
+        <h1>
             CSS Demo
         </h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, ad!</p>
-        <p id="p1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, ad!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, ad!</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, ad!</p>
     </div>
 
