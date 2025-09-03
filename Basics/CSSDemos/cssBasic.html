@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Basics</title>
+
+    <style>
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #p1 {
+            border-width: 8px 6px 4px 2px;
+            border-style: double dotted dashed solid;
+            border-color: red;
+            border-radius: 20px;
+            padding: 5px;
+            background-color: black;
+            color: white;
+        }
+
+        .bg-dark {
+            background-color: black;
+            color: white;
+        }
+
+        .bg-light {
+            background-color: white;
+            color: black;
+        }
+
+        .bg-lightpink {
+            background-color: lightpink;
+            color: black;
+        }
+
+        .bg-skyblue {
+            background-color: skyblue;
+            color: black;
+        }
+
+        .box {
+            height: 150px;
+            width: 150px;
+            text-align: center;
+            padding: 7px;
+            margin-top: 4px;
+            border: solid black;
+            overflow-y: auto;
+        }
+
+        #cat {
+            height: 10%;
+            width: 10%;
+            border: 10px solid black;
+            border-radius: 30px;
+        }
+
+        .d1 {
+            display: inline;
+            display: flex;
+            border: 10px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="contact.html">Contact</a>
+            <a href="#"> CSS Basics</a>
+        </nav>
+    </header>
+
+    <div>
+        <img id="cat" src="images/cat1.jpg" alt="cat">
+    </div>
+
+    <div class="d1 bg-lightpink">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quo, reiciendis in doloremque voluptas debitis omnis! Ullam maxime est deleniti?</div>
+    <div class="d1 bg-lightpink">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quo, reiciendis in doloremque voluptas debitis omnis! Ullam maxime est deleniti?</div>
+    <div class="d1 bg-lightpink">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quo, reiciendis in doloremque voluptas debitis omnis! Ullam maxime est deleniti?</div>
+    <div class="d1 bg-lightpink">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quo, reiciendis in doloremque voluptas debitis omnis! Ullam maxime est deleniti?</div>
+
+    <div style="max-width: 1200px; min-width: 500px" class="bg-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
+        minus ut ipsa! Vel,
+        rerum fuga! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius animi necessitatibus, cumque delectus
+        nesciunt, in neque rerum sunt natus ad quos debitis minima culpa quidem tempora non eaque dolores odit pariatur
+        sequi consequuntur exercitationem ab error? Est ducimus molestias blanditiis?
+    </div>
+    <div class="bg-lightpink box">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem minus ut ipsa! Vel,
+        rerum fuga!
+    </div>
+    <hr>
+    <div class="bg-skyblue box">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam aliquid corporis aut atque
+        inventore quidem tempore deleniti vel corrupti officiis nemo perferendis mollitia, voluptas deserunt iste
+        expedita pariatur dolore debitis reiciendis. Repellat quod aliquid, distinctio hic vero possimus natus.
+        Distinctio magnam iusto corporis nemo, vero accusantium neque aliquid obcaecati velit!
+        <a href="index.html">Home</a>
+    </div>
+    <hr>
+    <div class="bg-skyblue">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, incidunt.
+    </div>
+    <hr>
+    <div class="bg-dark">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus blanditiis error numquam optio, ipsam temporibus.
+    </div>
+
+    <div>
+        <p id="p1">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores, non.</p>
+    </div>
+
+</body>
+
+</html>
