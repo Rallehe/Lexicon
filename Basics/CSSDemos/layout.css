@@ -97,6 +97,10 @@
             display: block;
         }
 
+        #auth {
+            margin-left: auto;
+        }
+
         .box {
             margin-top: 100px;
             height: 50px;
