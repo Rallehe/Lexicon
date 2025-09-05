@@ -7,9 +7,13 @@
     <title>JS HTML</title>
     <style>
         .box {
-            height: 150px;
-            width: 150px;
-            background-color: darkgreen;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            width: 50px;
+            height: 50px;
+            background-color: darkolivegreen;
+            border-radius: 8px;
         }
 
         button {
@@ -20,7 +24,36 @@
 
 <body>
 
-    <div id="box1" class="box">
+    <div id="box1" class="box"></div>
+    <script>
+        const box = document.getElementById("box1");
+        let x = 100;
+        let y = 100;
+
+        document.addEventListener("keydown", function (event) {
+            switch (event.key) {
+                case "ArrowUp":
+                    y -= 5;
+                    break;
+                case "ArrowDown":
+                    y += 5;
+                    break;
+                case "ArrowLeft":
+                    x -= 5;
+                    break;
+                case "ArrowRight":
+                    x += 5;
+                    break;
+                default:
+                    break;
+            }
+            box.style.top = y + "px";
+            box.style.left = x + "px";
+        });
+    </script>
+
+
+    <!-- <div id="box1" class="box">
 
     </div>
     <button onmouseenter="changeBg()" onmouseleave="resetBg()" onclick="hideBox()">Hide / Show</button><br>
@@ -55,7 +88,7 @@
             document.getElementById('box1').style.backgroundColor = "darkgreen";
             document.getElementById('box1').style.visibility = "visible";
         }
-    </script>
+    </script> -->
 
     <!-- / -->
 
