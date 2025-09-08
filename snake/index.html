@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS HTML</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .apple {
+            position: absolute;
+            top: -5000px;
+            left: -50000px;
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            border-radius: 80px;
+        }
+
+        .box {
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            width: 50px;
+            height: 50px;
+            background-color: darkolivegreen;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="box" class="box"></div>
+    <div id="apple" class="apple"></div>
+    <div id="score">Score: 0</div>
+    <script>
+        const box = document.getElementById("box");
+        // Box size
+        const boxWidth = 50;
+        const boxHeight = 50;
+        // Center coordinates
+        let boxX = (window.innerWidth / 2) - (boxWidth / 2);
+        let boxY = (window.innerHeight / 2) - (boxHeight / 2);
+        // Place box in center
+        box.style.left = boxX + "px";
+        box.style.top = boxY + "px";
+        let score = 0;
+
+        let lastInput = null;
+
+
+        document.addEventListener("keydown", function (event) {
+            if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.key)) {
+                lastInput = event.key;
+            }
+        });
+
+        let applePosition = generateApple();
+
+        setInterval(() => {
+            if (!lastInput) return;
+            switch (lastInput) {
+                case "ArrowUp":
+                    boxY -= 2;
+                    break;
+                case "ArrowDown":
+                    boxY += 2;
+                    break;
+                case "ArrowLeft":
+                    boxX -= 2;
+                    break;
+                case "ArrowRight":
+                    boxX += 2;
+                    break;
+            }
+
+            // Check collision
+            checkAppleCollision(applePosition[0], applePosition[1], boxX, boxY, boxWidth, boxHeight);
+            const result = checkCollision(boxX, boxY, boxWidth, boxHeight);
+            gameLostAlert(result);
+
+            box.style.top = boxY + "px";
+            box.style.left = boxX + "px";
+        }, 1);
+
+        function checkAppleCollision(appleX, appleY, boxX, boxY, boxWidth, boxHeight) {
+            const appleWidth = 30;
+            const appleHeight = 30;
+
+            const boxRight = boxX + boxWidth;
+            const boxBottom = boxY + boxHeight;
+            const appleRight = appleX + appleWidth;
+            const appleBottom = appleY + appleHeight;
+
+            const overlap = !(boxRight < appleX ||
+                boxX > appleRight ||
+                boxBottom < appleY ||
+                boxY > appleBottom);
+
+            if (overlap) {
+                updateScore(score);
+                applePosition = generateApple();
+            }
+        }
+
+        function updateScore(score) {
+            console.log(score);
+            score++;
+            document.getElementById('score').innerHTML = `Score: ${score}`; 
+        }
+
+        function checkCollision(boxX, boxY, boxWidth, boxHeight) {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+
+            let hitLeft = boxX <= 0;
+            let hitTop = boxY <= 0;
+            let hitRight = boxX + boxWidth >= screenWidth;
+            let hitBottom = boxY + boxHeight >= screenHeight;
+
+            return {
+                top: hitTop,
+                left: hitLeft,
+                right: hitRight,
+                bottom: hitBottom,
+            };
+        }
+
+        function gameLostAlert(result) {
+            if (result.top) {
+                alert("💥You lost! You hit the TOP edge")
+                location.reload();
+            } else if (result.bottom) {
+                alert("💥You lost! You hit the BOTTOM edge");
+                location.reload();
+            } else if (result.left) {
+                alert("💥You lost! You hit the LEFT edge");
+                location.reload();
+            } else if (result.right) {
+                alert("💥You lost! You hit the RIGHT edge");
+                location.reload();
+            }
+        }
+
+        function generateApple() {
+            const apple = document.getElementById("apple");
+            // Apple size
+            const appleWidth = 30;
+            const appleHeight = 30;
+            // Center coordinates
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+
+            // Random x and y, making sure the apple stays fully visible
+            let x = Math.floor(Math.random() * (screenWidth - appleWidth));
+            let y = Math.floor(Math.random() * (screenHeight - appleHeight));
+
+            apple.style.left = x + "px";
+            apple.style.top = y + "px";
+
+            return [x, y];
+        }
+    </script>
+
+</body>
+
+</html>
