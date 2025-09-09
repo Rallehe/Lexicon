@@ -297,3 +297,139 @@ let prompt = require('prompt-sync')();
 // console.log(res);
 
 
+
+// function add(x, y) {
+//     return x + y;
+// }
+
+// let myArray = [1,2,3,4,5,6,7,8,9];
+
+// function timesTwo(x) {
+//     return x * 2;
+// }
+
+// myArray.forEach(x => {
+//     console.log(timesTwo(x));
+// });
+
+
+// let myStringArray = ["Hello", "my", "name", "is", "Rasmus"];
+
+// let myString = "";
+// myStringArray.forEach(element => {
+//     myString += element + " ";
+// });
+
+// console.log(myString.trim());
+
+
+
+// let radius = 123;
+
+// function calcArea(radius) {
+//     let area = Math.PI * Math.pow(radius,2);
+//     console.log(`Area of the circle is ${area}`);
+// }
+
+// calcArea(radius);
+
+
+// class Person {
+//     name;
+//     age;
+
+//     constructor (name, age) {
+//         this.name = name;
+//         this.age = age;
+//     }
+
+//     printPerson() {
+//         console.log(`Name: ${this.name}\nAge: ${this.age}`)
+//     }
+// }
+
+// let myPerson = new Person("Rasmus", 27);
+
+// myPerson.printPerson();
+
+
+
+// Task 1) Write a function to check if the number is even number? 
+//         Pass a number as a parameter and return true if number is even. 
+
+
+// function isEven(number) {
+//     return number % 2 == 0;
+// }
+
+// console.log(isEven(6));
+
+
+
+// Task 2) Write a function to introduce a person. 
+//      User input:  first name and last name pass as a parameters 
+//      Print a message inside the function 
+
+
+// let firstName = prompt("What's you first name? ");
+// let lastName = prompt("What's you last name? ");
+
+// introducePerson(firstName, lastName);
+
+// function introducePerson(firstName, lastName) {
+//     console.log(`Hello ${firstName} ${lastName}`);
+// }
+
+
+
+// Task 3) Write a function to check if given number (parameter) is a prime number or not. 
+
+
+// function isPrime(number) {
+//     let numberOfPrime = 1;
+//     if (number > 1) {
+//         let isPrime = true;
+//         for (let i = 2; i <= Math.sqrt(number); i++) {
+//             if (number % i === 0) {
+//                 isPrime = false;
+//                 break;
+//             }
+//         }
+//         if (isPrime) {
+//             console.log(`${number} is a prime number`);
+//             numberOfPrime++;
+//         }
+//     }
+//     number++;
+// }
+
+// const numbers = Array.from({ length: 100 }, (_, i) => i + 1);
+
+// numbers.forEach(number => {
+//     isPrime(number);
+// });
+
+
+
+// Task 4) Write a function to calculate age of a person. 
+// User input : Date of birth, first name and last name.  
+//   Display the age of person and call the introduce function from task2. 
+
+
+// let firstName = prompt("What's your first name? ");
+// let lastName = prompt("What's your last name? ");
+// let dateOfBirth = prompt("What's your date of birth (yyyymmdd)? ");
+
+
+// function calcAge(dateOfBirth) {
+//     const today = new Date();
+//     const yyyy = today.toISOString().slice(0, 4).replace(/-/g, '');
+//     let dobyyyy = dateOfBirth.slice(0,4);
+//     console.log(introducePerson(firstName, lastName) + `\nYou are ${yyyy - dobyyyy} years old`)
+// }
+
+// function introducePerson(firstName, lastName) {
+//     return `Hello ${firstName} ${lastName}`;
+// }
+// calcAge(dateOfBirth);
+
