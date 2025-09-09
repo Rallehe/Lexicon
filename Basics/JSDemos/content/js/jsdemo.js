@@ -423,7 +423,7 @@ let prompt = require('prompt-sync')();
 
 // function calcAge(dateOfBirth) {
 //     const today = new Date();
-//     const yyyy = today.toISOString().slice(0, 4).replace(/-/g, '');
+//     const yyyy = today.toISOString().slice(0, 4);
 //     let dobyyyy = dateOfBirth.slice(0,4);
 //     console.log(introducePerson(firstName, lastName) + `\nYou are ${yyyy - dobyyyy} years old`)
 // }
