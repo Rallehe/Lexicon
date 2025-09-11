@@ -433,3 +433,73 @@ let prompt = require('prompt-sync')();
 // }
 // calcAge(dateOfBirth);
 
+
+
+// let person = {
+//     firstName: "Test",
+//     lastName: "Tester",
+//     age: 42,
+//     from: "Testing",
+// }
+
+// console.log(`Name: ${person.firstName} ${person.lastName}, Age: ${person.age}, From: ${person.from}`);
+
+
+
+// let colors = ["Red", "Green", "Blue"];
+// colors.reverse();
+
+// colors.forEach((color, index) => {
+//     console.log(color + " " + index)
+// });
+
+// let nums = [1,2,3,4,5];
+
+// let numShift = nums.shift();
+
+// nums.forEach(element => {
+//     console.log(element);
+// });
+
+// console.log(numShift);
+
+// let a = [1,2,3,4,5];
+// let b = a.toReversed();
+// a.forEach(element => {
+//     console.log(element);
+// });
+// console.log();
+// b.forEach(element => {
+//     console.log(element);
+// });
+
+
+// let a = [1,2,3,4,5,6,7,8];
+
+// function myFunction(x) {
+//     return x * 3;
+// }
+
+// const mapA = a.map((x) => myFunction(x));
+
+// mapA.forEach(element => {
+//     console.log(element);
+// });
+
+
+// const products = [
+//   { name: "sports car" },
+//   { name: "laptop" },
+//   { name: "phone" },
+// ];
+
+// products.map((product) => {
+//   product.price = 100;
+// });
+
+// products.forEach(element => {
+//     console.log(element);
+// });
+
+
+
