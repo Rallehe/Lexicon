@@ -502,4 +502,90 @@ let prompt = require('prompt-sync')();
 // });
 
 
+// let randomArray = [];
+// for (let i = 0; i < 10; i++) {
+//     randomArray.push(Math.floor(Math.random() * 100));
+// }
+// randomArray.sort();
+// console.log(...randomArray); // ... = spread operator
+
+
+// const names = ["Rasmus", "Oskar", "Lars", "Karl", "Hans"];
+
+// console.log(names.at(-2));
+// console.log(Object.keys(names));
+
+
+// const num1 = [1, 2, 3];
+// const num2 = [4, 5, 6];
+// const num3 = [7, 8, 9];
+
+// num1.concat(num2, num3).forEach(element => {
+//     console.log(element);
+// });
+
+
+
+// const array = [1, 2, 3, 4, 5, 6];
+
+// console.log(array.copyWithin(1, 2, 3));
+// console.log(array.copyWithin(0, 3));
+
+
+// const entr = array.entries();
+
+// console.log(entr.next());
+
+
+
+// const array = [1, 2, 3, 4,];
+// console.log(array.fill(1, 2, 3));
+
+
+// const isBelowThreshold = (currentValue) => currentValue < 40;
+
+// const array1 = [1, 30, 39, 29, 10, 13];
+
+// console.log(array1.every(isBelowThreshold));
+
+
+// const array = [5, 12, 8, 130, 44];
+
+// const found = array.find((element) => element > 10);
+
+// console.log(found);
+
+
+// console.log([1, 2, 3].includes(2)); // true
+// console.log([1, 2, 3].includes(4)); // false
+// console.log([1, 2, 3].includes(3, 3)); // false
+// console.log([1, 2, 3].includes(3, -1)); // true
+// console.log([1, 2, NaN].includes(NaN)); // true
+// console.log(["1", "2", "3"].includes(3)); // false
+
+
+
+
+// const elements = ["Fire", "Air", "Water"];
+
+// console.log(elements.join());
+// // Expected output: "Fire,Air,Water"
+
+// console.log(elements.join(""));
+// // Expected output: "FireAirWater"
+
+// console.log(elements.join("-"));
+// // Expected output: "Fire-Air-Water"
+
+
+
+
+// index, remove at (0 for insert at), replace or insert
+// const myFish = ["angel", "clown", "mandarin", "sturgeon"];
+// myFish.splice(2, 1, "bruno");
+// console.log(myFish);
+
+
+
+
 
