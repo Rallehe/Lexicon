@@ -601,3 +601,15 @@ let prompt = require('prompt-sync')();
 // console.log(sum(5, 4));
 
 
+// const x = new Set([1,2,3,4,5,6]);
+// const y = new Set([2,3,45,6]);
+
+// console.log(y.difference(x));
+
+// const odds = new Set([1, 3, 5, 7, 9]);
+// const squares = new Set([1, 4, 9]);
+// console.log(odds.difference(squares));
+
+
+
+
