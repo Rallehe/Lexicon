@@ -578,14 +578,26 @@ let prompt = require('prompt-sync')();
 // // Expected output: "Fire-Air-Water"
 
 
-
-
 // index, remove at (0 for insert at), replace or insert
 // const myFish = ["angel", "clown", "mandarin", "sturgeon"];
 // myFish.splice(2, 1, "bruno");
 // console.log(myFish);
 
 
+// let sum = function (x, y) {
+//     return x + y;
+// }
 
+// console.log(sum(1, 4));
+
+
+// let sum = (x, y) => {
+//     return x + y;
+// }
+// console.log(sum(5, 4));
+
+
+// let sum = (x, y) => x + y;
+// console.log(sum(5, 4));
 
 
