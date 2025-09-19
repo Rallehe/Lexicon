@@ -612,4 +612,88 @@ let prompt = require('prompt-sync')();
 
 
 
+// class Person { 
+//     constructor(name, age) {
+//         this.name = name;
+//         this.age = age;
+//     }
+//     greet() {
+//         console.log(`Hello ${this.name}`);
+//     }
+// }
+// let p = new Person("Rasmus", 13);
+// p.greet();
 
+
+// class Circle {
+//     constructor(radius) {
+//         this.radius = radius;
+//         console.log("Object created");
+//     }
+
+//     getArea() {
+//         return Math.PI * (this.radius ** 2);
+//     }
+//     printArea() {
+//         console.log(`Area of circle is ${this.getArea()}\nRadius of circle is ${this.radius}`)
+//     }
+// }
+
+// let c1 = new Circle(3)
+// c1.printArea();
+
+
+
+// class Employee {
+//     #pNum = "971110-xxxx";
+//     constructor(empId, name, salary, email) {
+//         this.empId = empId;
+//         this.name = name;
+//         this.salary = salary;
+//         this.email = email;
+//         this.#pNum = pNum;
+//     }
+// }
+
+// const emp1 = new Employee(1, "Rasmus", 50000, "MyEmail@mail.com");
+
+// console.log(emp1.pNum);
+
+
+// class Person {
+//     constructor(name, age) {
+//         this.name = name;
+//         this.age = age;
+//     }
+//     printPerson() {
+//         return `This i ${this.name}, he is ${this.age}`;
+//     }
+// }
+
+// class Employee extends Person {
+//     constructor(name, age, salary) {
+//         super(name, age);
+//         this.salary = salary;
+//     }
+//     printEmployee() {
+//         return `${this.printPerson()} and he makes ${this.salary}`;
+//     }
+// }
+
+// let e1 = new Employee("Rasmus", 27, 50000);
+// console.log(e1.name);
+// console.log(e1.age);
+// console.log(e1.salary);
+// console.log(e1.printPerson());
+// console.log(e1.printEmployee());
+
+
+// const rasmus = {
+//     name: "Rasmus",
+//     age: 27,
+//     introduce(){
+//         return console.log(`Hello my name is ${rasmus.name}, I'm ${rasmus.age}`);
+//     }
+// }
+
+// rasmus.introduce();
