@@ -104,7 +104,14 @@ function runExerciseNine() {
 }
 
 function runExerciseTen() {
+  let str = "The quick fox Jumped Over the DOG";
 
+  str = str.toLowerCase();
+  str = str.replace("quick", "brown");
+  str = str.replace("dog", "lazy dog");
+  str = str.charAt(0).toUpperCase() + str.slice(1);
+
+  console.log(str);
 }
 
 function runExerciseEleven() {
