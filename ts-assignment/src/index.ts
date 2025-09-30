@@ -21,24 +21,95 @@ function runExerciseTwo() {
 }
 
 function runExerciseThree() {
-  
+  const num31: number = 10.5;
+  const num32: number = 15;
+  const result: number = num31 + num32;
+  console.log(result);
+
+  const oddNumber: number = 7;
+  const evenNumber: number = 10;
+  console.log(`Odd: ${oddNumber} / Even: ${evenNumber} is: ${oddNumber / evenNumber}`)
 }
 
-function runExerciseFour() {}
+function runExerciseFour() {
+  console.log("Skipped");
+}
 
-function runExerciseFive() {}
+function runExerciseFive() {
+  const num51: number = Number(readLine("Enter a number: "));
+  const num52: number = Number(readLine("Enter another number: "));
 
-function runExerciseSix() {}
+  if (num51 + 1 === num52) {
+    console.log("Consecutive");
+  }
+  else if (num51 - 1 === num52) {
+    console.log("Consecutive");
+  }
+  else {
+    console.log("Not consecutive");
+  }
+}
 
-function runExerciseSeven() {}
+function runExerciseSix() {
+  const num61: number = Number(readLine("Enter a number: "));
+  num61 % 2 == 0 ? console.log("Even") : console.log("Odd");
+}
 
-function runExerciseEight() {}
+function runExerciseSeven() {
+  const bodyTemp: number = Number(readLine("Enter your body temperature: "));
+  bodyTemp > 37.5 ? console.log("You have a fever!") : console.log("No worries, you don't have a fever :)");
+}
 
-function runExerciseNine() {}
+function runExerciseEight() {
+  const grade = readLine("Enter your grade: ").toLowerCase();
+  switch (grade) {
+    case "a":
+      console.log("AN A!!! GREAT JOB!");
+      break;
+    case "b":
+      console.log("B! Good job!");
+      break;
+    case "c":
+      console.log("Good job, but you can do better");
+      break;
+    case "d":
+      console.log("Are you even trying at this point?");
+      break;
+    case "e":
+      console.log("Get out of my house you disgrace");
+      break;
+    default:
+      console.log("That's not a valid grade (A, B, C, D, E)");
+  }
+}
 
-function runExerciseTen() {}
+function runExerciseNine() {
+  const userInput: string = readLine("Enter a string to see if it's a palindrome: ");
+  const maybePalindrome: string = userInput.toLowerCase().replace(/[^a-z0-9]/g, "");;
+  let y: number = maybePalindrome.length - 1;
+  let isPalindrome = true;
 
-function runExerciseEleven() {}
+  for (let i = 0; i <= y; i++) {
+    if (maybePalindrome[i] !== maybePalindrome[y]) {
+      console.log(`${maybePalindrome} isn't a palindrome!`);
+      isPalindrome = false;
+      break;
+    }
+    y--;
+  }
+
+  if (isPalindrome) {
+    console.log(`${maybePalindrome} is a palindrome!`);
+  }
+}
+
+function runExerciseTen() {
+
+}
+
+function runExerciseEleven() {
+  console.log("Skipped");
+}
 
 /* ^^^^^^^^^^^^  Add the rest of the exercise functions above this line ^^^^^^^^^^^^ */
 
