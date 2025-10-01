@@ -118,6 +118,52 @@ function runExerciseEleven() {
   console.log("Skipped");
 }
 
+function runExerciseThirteen() {
+  
+}
+
+function runExerciseFourteen() { }
+
+function runExerciseFifteen() { }
+
+function runExerciseSixteen() { }
+
+function runExerciseSeventeen() { }
+
+function runExerciseEighteen() { }
+
+function runExerciseNineteen() { }
+
+function runExerciseTwenty() { }
+
+function runExerciseTwentyOne() { }
+
+function runExerciseTwentyTwo() { }
+
+function runExerciseTwentyThree() { }
+
+function runExerciseTwentyFour() { }
+
+function runExerciseTwentyFive() { }
+
+function runExerciseTwentySix() { }
+
+function runExerciseTwentySeven() { }
+
+function runExerciseTwentyEight() { }
+
+function runExerciseTwentyNine() { }
+
+function runExerciseThirty() { }
+
+function runExerciseThirtyOne() { }
+
+function runExerciseThirtyTwo() { }
+
+function runExerciseThirtyThree() { }
+
+function runExerciseThirtyFour() { }
+
 /* ^^^^^^^^^^^^  Add the rest of the exercise functions above this line ^^^^^^^^^^^^ */
 
 let keepAlive = true;
