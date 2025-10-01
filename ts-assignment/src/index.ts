@@ -104,51 +104,51 @@ function runExerciseNine() {
 }
 
 function runExerciseTen() {
-  // // A
-  // let str: string = "The quick fox Jumped Over the DOG";
-  // str = str.toLowerCase();
-  // str = str.replace("quick", "brown");
-  // str = str.replace("dog", "lazy dog");
-  // str = str.charAt(0).toUpperCase() + str.slice(1);
-  // console.log(str);
+  // A
+  let str: string = "The quick fox Jumped Over the DOG";
+  str = str.toLowerCase();
+  str = str.replace("quick", "brown");
+  str = str.replace("dog", "lazy dog");
+  str = str.charAt(0).toUpperCase() + str.slice(1);
+  console.log(str);
 
-  // // B
-  // const string1 = readLine("Enter a string: ");
-  // const string2 = readLine("Enter a string: ");
-  // string1 === string2 ? console.log("Same string") : console.log("Not the same string");
+  // B
+  const string1 = readLine("Enter a string: ");
+  const string2 = readLine("Enter a string: ");
+  string1 === string2 ? console.log("Same string") : console.log("Not the same string");
 
-  // // C
-  // const donkey: string = "Donkey"; 
-  // const monkey: string = donkey.replace("D", "M");
-  // console.log(monkey);
+  // C
+  const donkey: string = "Donkey";
+  const monkey: string = donkey.replace("D", "M");
+  console.log(monkey);
 
-  // // D
-  // const longText: string = "I am going to visit Kolmården zoo tomorrow. I am a big fan of the dolphin show. I may watch all dolphin shows during the day. I would like to take a gondola safari as well. I wish to visit Bamse and his team there."
-  // const fixedLongText = longText.replace(/I|am/g, (match) => {
-  //   if (match === "I") return "We";
-  //   if (match === "am") return "are";
-  //   return match;
-  // });
-  // console.log(fixedLongText);
+  // D
+  const longText: string = "I am going to visit Kolmården zoo tomorrow. I am a big fan of the dolphin show. I may watch all dolphin shows during the day. I would like to take a gondola safari as well. I wish to visit Bamse and his team there."
+  const fixedLongText = longText.replace(/I|am/g, (match) => {
+    if (match === "I") return "We";
+    if (match === "am") return "are";
+    return match;
+  });
+  console.log(fixedLongText);
 
-  // // E
-  // const singerString: string = "She is the popular singer.";
-  // const mostPosition: number = 11;
-  // const most: string = "most ";
-  // const mostSingerString: string = singerString.slice(0, mostPosition) + most + singerString.slice(mostPosition);
-  // console.log(mostSingerString);
+  // E
+  const singerString: string = "She is the popular singer.";
+  const mostPosition: number = 11;
+  const most: string = "most ";
+  const mostSingerString: string = singerString.slice(0, mostPosition) + most + singerString.slice(mostPosition);
+  console.log(mostSingerString);
 
-  // // F
-  // const friendString: string = "A friend is the asset of your life.";
-  // const truePosition: number = 2;
-  // const trueString: string = "true ";
-  // const trueFriendString: string = friendString.slice(0, truePosition) + trueString + friendString.slice(truePosition).replace("asset", "greatest asset");
-  // console.log(trueFriendString);
+  // F
+  const friendString: string = "A friend is the asset of your life.";
+  const truePosition: number = 2;
+  const trueString: string = "true ";
+  const trueFriendString: string = friendString.slice(0, truePosition) + trueString + friendString.slice(truePosition).replace("asset", "greatest asset");
+  console.log(trueFriendString);
 
-  // // G
-  // const sebString: string = "My name is Sebastian Vallin.";
-  // const shortSebString: string = sebString.slice(11);
-  // console.log(shortSebString);
+  // G
+  const sebString: string = "My name is Sebastian Vallin.";
+  const shortSebString: string = sebString.slice(11);
+  console.log(shortSebString);
 
   // H
   // ??????????????????????????????????????????????????
@@ -159,22 +159,64 @@ function runExerciseEleven() {
 }
 
 function runExerciseTwelve() {
+  const num: number = Number(readLine("Enter a number less than 100: "));
+  if (num >= 100 || num < 1) {
+    console.log("Number must be between 1 and 99!");
+  } else {
+    console.log("Ascending order:");
+    for (let i = 1; i <= num; i++) {
+      console.log(i);
+    }
 
+    console.log("\nDescending order:");
+    for (let i = num; i >= 1; i--) {
+      console.log(i);
+    }
+  }
 }
 
 function runExerciseThirteen() {
-
+  const secretNumber: number = Math.floor(Math.random() * 10) + 1;
+  let secretNumberGuess: number;
+  do {
+    secretNumberGuess = Number(readLine("Guess a number between 1-10 (0 to exit): "));
+    if (secretNumberGuess === secretNumber) {
+      console.log(`You guessed correct! The secret number was ${secretNumber}`);
+    }
+    else if (secretNumberGuess === 0) {
+      console.log("Thanks for playing!");
+    }
+    else {
+      console.log("Wrong try again!");
+    }
+  } while (secretNumberGuess !== secretNumber && secretNumberGuess !== 0);
 }
 
-function runExerciseFourteen() { }
+function runExerciseFourteen() {
+  for (let i = 1; i <= 10; i++) {
+    for (let j = 1; j <= 10; j++) {
+      process.stdout.write(`|${i * j}`);
+    }
+    process.stdout.write(`|`);
+    console.log();
+  }
+}
 
-function runExerciseFifteen() { }
+function runExerciseFifteen() {
+  console.log("Skipped");
+}
 
-function runExerciseSixteen() { }
+function runExerciseSixteen() {
+  console.log("Skipped");
+}
 
-function runExerciseSeventeen() { }
+function runExerciseSeventeen() {
+  console.log("Skipped");
+}
 
-function runExerciseEighteen() { }
+function runExerciseEighteen() {
+  console.log("Skipped");
+}
 
 function runExerciseNineteen() { }
 
