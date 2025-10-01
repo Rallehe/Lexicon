@@ -61,7 +61,7 @@ function runExerciseSeven() {
 }
 
 function runExerciseEight() {
-  const grade = readLine("Enter your grade: ").toLowerCase();
+  const grade: string = readLine("Enter your grade: ").toLowerCase();
   switch (grade) {
     case "a":
       console.log("AN A!!! GREAT JOB!");
@@ -87,7 +87,7 @@ function runExerciseNine() {
   const userInput: string = readLine("Enter a string to see if it's a palindrome: ");
   const maybePalindrome: string = userInput.toLowerCase().replace(/[^a-z0-9]/g, "");;
   let y: number = maybePalindrome.length - 1;
-  let isPalindrome = true;
+  let isPalindrome: boolean = true;
 
   for (let i = 0; i <= y; i++) {
     if (maybePalindrome[i] !== maybePalindrome[y]) {
@@ -104,22 +104,66 @@ function runExerciseNine() {
 }
 
 function runExerciseTen() {
-  let str = "The quick fox Jumped Over the DOG";
+  // // A
+  // let str: string = "The quick fox Jumped Over the DOG";
+  // str = str.toLowerCase();
+  // str = str.replace("quick", "brown");
+  // str = str.replace("dog", "lazy dog");
+  // str = str.charAt(0).toUpperCase() + str.slice(1);
+  // console.log(str);
 
-  str = str.toLowerCase();
-  str = str.replace("quick", "brown");
-  str = str.replace("dog", "lazy dog");
-  str = str.charAt(0).toUpperCase() + str.slice(1);
+  // // B
+  // const string1 = readLine("Enter a string: ");
+  // const string2 = readLine("Enter a string: ");
+  // string1 === string2 ? console.log("Same string") : console.log("Not the same string");
 
-  console.log(str);
+  // // C
+  // const donkey: string = "Donkey"; 
+  // const monkey: string = donkey.replace("D", "M");
+  // console.log(monkey);
+
+  // // D
+  // const longText: string = "I am going to visit Kolmården zoo tomorrow. I am a big fan of the dolphin show. I may watch all dolphin shows during the day. I would like to take a gondola safari as well. I wish to visit Bamse and his team there."
+  // const fixedLongText = longText.replace(/I|am/g, (match) => {
+  //   if (match === "I") return "We";
+  //   if (match === "am") return "are";
+  //   return match;
+  // });
+  // console.log(fixedLongText);
+
+  // // E
+  // const singerString: string = "She is the popular singer.";
+  // const mostPosition: number = 11;
+  // const most: string = "most ";
+  // const mostSingerString: string = singerString.slice(0, mostPosition) + most + singerString.slice(mostPosition);
+  // console.log(mostSingerString);
+
+  // // F
+  // const friendString: string = "A friend is the asset of your life.";
+  // const truePosition: number = 2;
+  // const trueString: string = "true ";
+  // const trueFriendString: string = friendString.slice(0, truePosition) + trueString + friendString.slice(truePosition).replace("asset", "greatest asset");
+  // console.log(trueFriendString);
+
+  // // G
+  // const sebString: string = "My name is Sebastian Vallin.";
+  // const shortSebString: string = sebString.slice(11);
+  // console.log(shortSebString);
+
+  // H
+  // ??????????????????????????????????????????????????
 }
 
 function runExerciseEleven() {
   console.log("Skipped");
 }
 
+function runExerciseTwelve() {
+
+}
+
 function runExerciseThirteen() {
-  
+
 }
 
 function runExerciseFourteen() { }
@@ -207,6 +251,75 @@ while (keepAlive) {
         break;
       case 11:
         runExerciseEleven();
+        break;
+      case 12:
+        runExerciseTwelve();
+        break;
+      case 13:
+        runExerciseThirteen();
+        break;
+      case 14:
+        runExerciseFourteen();
+        break;
+      case 15:
+        runExerciseFifteen();
+        break;
+      case 16:
+        runExerciseSixteen();
+        break;
+      case 17:
+        runExerciseSeventeen();
+        break;
+      case 18:
+        runExerciseEighteen();
+        break;
+      case 19:
+        runExerciseNineteen();
+        break;
+      case 20:
+        runExerciseTwenty();
+        break;
+      case 21:
+        runExerciseTwentyOne();
+        break;
+      case 22:
+        runExerciseTwentyTwo();
+        break;
+      case 23:
+        runExerciseTwentyThree();
+        break;
+      case 24:
+        runExerciseTwentyFour();
+        break;
+      case 25:
+        runExerciseTwentyFive();
+        break;
+      case 26:
+        runExerciseTwentySix();
+        break;
+      case 27:
+        runExerciseTwentySeven();
+        break;
+      case 28:
+        runExerciseTwentyEight();
+        break;
+      case 29:
+        runExerciseTwentyNine();
+        break;
+      case 30:
+        runExerciseThirty();
+        break;
+      case 31:
+        runExerciseThirtyOne();
+        break;
+      case 32:
+        runExerciseThirtyTwo();
+        break;
+      case 33:
+        runExerciseThirtyThree();
+        break;
+      case 34:
+        runExerciseThirtyFour();
         break;
 
       /* ^^^^^^^^^^^^  Add the rest of the exercises above this line ^^^^^^^^^^^^ */
