@@ -297,7 +297,21 @@ function runExerciseTwentyTwo() {
 }
 
 function runExerciseTwentyThree() {
-  
+  const numbers21: string = readLine("Enter a string of numbers (ex: 1,2,34,55,65,92): ");
+  const arrayNumber21 = numbers21.split(",").map(num => Number(num));
+  let average = 0;
+  let max = Number.MIN_VALUE;
+  let min = Number.MAX_VALUE;
+  arrayNumber21.forEach(number => {
+    if (number > max) {
+      max = number;
+    }
+    if (number < min) {
+      min = number;
+    }
+    average += number;
+  });
+  console.log(`Min = ${min}\nMax = ${max}\nAverage = ${average / arrayNumber21.length}`);
 }
 
 function runExerciseTwentyFour() { }
