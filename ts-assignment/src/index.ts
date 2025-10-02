@@ -266,27 +266,39 @@ function getAge(dateOfBirthString: string): number {
 
 function runExerciseTwentyTwo() {
   const nameBar: string = readLine("Please enter your name: ");
-  const dateOfBirthBar: string = readLine(`Welcome ${nameBar}, What's your date of birth? (yyyy-mm-dd)`);
+  const dateOfBirthBar: string = readLine(`Welcome ${nameBar}, What's your date of birth? (yyyy-mm-dd): `);
 
   getAge(dateOfBirthBar) >= 18 ? serveBeer() : serveCoke();
 
   function serveBeer() {
-    let orderBar: string = readLine("Do you want to have a beer? (yes/no)").toLocaleLowerCase();
+    const orderBar: string = readLine("Do you want to have a beer? (yes/no): ").toLocaleLowerCase();
     switch (orderBar) {
       case "yes":
         console.log("Serving Beer");
-      break;
+        break;
       case "no":
-        orderBar = readLine("Do you want a coke instead? (yes/no)").toLocaleLowerCase();
+        serveCoke();
     }
   }
 
   function serveCoke() {
-    console.log("Serving coke");
+    const orderBar = readLine("Do you want a coke? (yes/no): ").toLocaleLowerCase();
+    switch (orderBar) {
+      case "yes":
+        console.log("Serving Coke");
+        break;
+      case "no":
+        nothingElse();
+    }
+  }
+  function nothingElse() {
+    console.log("No more options");
   }
 }
 
-function runExerciseTwentyThree() { }
+function runExerciseTwentyThree() {
+  
+}
 
 function runExerciseTwentyFour() { }
 
