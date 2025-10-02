@@ -380,11 +380,49 @@ function runExerciseTwentyNine() { console.log("Skipped") };
 
 function runExerciseThirty() { console.log("Skipped") };
 
-function runExerciseThirtyOne() { }
+function runExerciseThirtyOne() {
+  const today = new Date().getFullYear();
+  const year: number = Number(readLine("Enter the current year: "));
+  today !== year ? console.log("That's not correct") : console.log("Correct!");
+}
 
-function runExerciseThirtyTwo() { }
+function runExerciseThirtyTwo() {
+  const today = new Date();
+  const longFormat = today.toLocaleDateString("sv-SE", {
+    weekday: "long",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
 
-function runExerciseThirtyThree() { }
+  const shortFormat = today.toLocaleDateString("en-US");
+
+  console.log(`Today long format: ${longFormat}`);
+  console.log(`Today short format: ${shortFormat}`);
+
+  const yesterday = new Date(today);
+  yesterday.setDate(today.getDate() - 1);
+  console.log(`Yesterday short format: ${yesterday.toLocaleDateString("en-US")}`);
+
+  const tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
+  console.log(`Tomorrow short format: ${tomorrow.toLocaleDateString("en-US")}`);
+}
+
+function runExerciseThirtyThree() {
+  const today = new Date().getFullYear();
+  const date: string = readLine("Enter a date (yyyy-mm-dd): ");
+  const year: number = Number(date.substring(0, 4));
+  if (today < year) {
+    console.log("Future Year");
+  }
+  else if (today > year) {
+    console.log("Past Year");
+  }
+  else {
+    console.log("Current Year");
+  }
+}
 
 function runExerciseThirtyFour() { console.log("Skipped") };
 
