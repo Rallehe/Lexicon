@@ -218,13 +218,56 @@ function runExerciseEighteen() {
   console.log("Skipped");
 }
 
-function runExerciseNineteen() { }
+function runExerciseNineteen() {
+  const height: number = Number(readLine("Add height to triangle: "));
+  const width: number = Number(readLine("Add height to width: "));
 
-function runExerciseTwenty() { }
+  console.log(triangleArea(height, width));
 
-function runExerciseTwentyOne() { }
+  function triangleArea(height: number, width: number): number {
+    return (height * width) * 0.5;
+  }
+}
 
-function runExerciseTwentyTwo() { }
+function runExerciseTwenty() {
+  let swapNum1: number = 5;
+  let swapNum2: number = 10;
+
+
+  console.log(`Before swap swapNum1: ${swapNum1}, swapNum2: ${swapNum2}`);
+  swap(swapNum1, swapNum2);
+  function swap(swapNum1: number, swapNum2: number): void {
+    let temp: number = swapNum1;
+    swapNum1 = swapNum2;
+    swapNum2 = temp;
+    console.log(`Swapped numbers swapNum1: ${swapNum1}, swapNum2: ${swapNum2}`);
+  }
+}
+
+function runExerciseTwentyOne() {
+  const dateOfBirthString: string = readLine("Enter date of birth (yyyy-mm-dd): ");
+  let age = getAge();
+  console.log(age);
+
+  function getAge(): number {
+    const today = new Date();
+    const dateOfBirth = new Date(dateOfBirthString);
+
+    let age = today.getFullYear() - dateOfBirth.getFullYear();
+
+    const monthDiff = today.getMonth() - dateOfBirth.getMonth();
+    const dayDiff = today.getDate() - dateOfBirth.getDate();
+
+    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+      age--;
+    }
+    return age;
+  }
+}
+
+function runExerciseTwentyTwo() {
+  
+}
 
 function runExerciseTwentyThree() { }
 
