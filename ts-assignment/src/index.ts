@@ -246,27 +246,44 @@ function runExerciseTwenty() {
 
 function runExerciseTwentyOne() {
   const dateOfBirthString: string = readLine("Enter date of birth (yyyy-mm-dd): ");
-  let age = getAge();
-  console.log(age);
+  console.log(getAge(dateOfBirthString));
+}
 
-  function getAge(): number {
-    const today = new Date();
-    const dateOfBirth = new Date(dateOfBirthString);
+function getAge(dateOfBirthString: string): number {
+  const today = new Date();
+  const dateOfBirth = new Date(dateOfBirthString);
 
-    let age = today.getFullYear() - dateOfBirth.getFullYear();
+  let age = today.getFullYear() - dateOfBirth.getFullYear();
 
-    const monthDiff = today.getMonth() - dateOfBirth.getMonth();
-    const dayDiff = today.getDate() - dateOfBirth.getDate();
+  const monthDiff = today.getMonth() - dateOfBirth.getMonth();
+  const dayDiff = today.getDate() - dateOfBirth.getDate();
 
-    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
-      age--;
-    }
-    return age;
+  if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+    age--;
   }
+  return age;
 }
 
 function runExerciseTwentyTwo() {
-  
+  const nameBar: string = readLine("Please enter your name: ");
+  const dateOfBirthBar: string = readLine(`Welcome ${nameBar}, What's your date of birth? (yyyy-mm-dd)`);
+
+  getAge(dateOfBirthBar) >= 18 ? serveBeer() : serveCoke();
+
+  function serveBeer() {
+    let orderBar: string = readLine("Do you want to have a beer? (yes/no)").toLocaleLowerCase();
+    switch (orderBar) {
+      case "yes":
+        console.log("Serving Beer");
+      break;
+      case "no":
+        orderBar = readLine("Do you want a coke instead? (yes/no)").toLocaleLowerCase();
+    }
+  }
+
+  function serveCoke() {
+    console.log("Serving coke");
+  }
 }
 
 function runExerciseTwentyThree() { }
