@@ -318,17 +318,67 @@ function runExerciseTwentyFour() {
   console.log(`Min = ${min}\nMax = ${max}\nAverage = ${average / arrayNumber21.length}`);
 }
 
-function runExerciseTwentyFive() { }
+function runExerciseTwentyFive() {
+  let numbers: number[] = [];
+  let numbersEven: number[] = [];
+  let numbersOdd: number[] = [];
+  for (let i = 0; i < 20; i++) {
+    numbers.push(Math.floor(Math.random() * 1000) + 1);
+  }
+  numbers.forEach(number => {
+    number % 2 === 0 ? numbersEven.push(number) : numbersOdd.push(number);
+  });
+  console.log("Numbers");
+  numbers.forEach(number => {
+    console.log(number);
+  });
+  console.log("Even numbers");
+  numbersEven.forEach(number => {
+    console.log(number);
+  });
+  console.log("Odd numbers");
+  numbersOdd.forEach(number => {
+    console.log(number);
+  });
+}
 
-function runExerciseTwentySix() { }
+function runExerciseTwentySix() {
+  let numbers26: number[] = [];
+  for (let i = 0; i < 10; i++) {
+    numbers26.push((Number(readLine("Enter a number: "))));
+  }
+  numbers26.forEach(number => {
+    if (number < 0) {
+      console.log(number);
+    }
+  });
+}
 
-function runExerciseTwentySeven() { }
+function runExerciseTwentySeven() {
+  let numbers27: number[] = [];
+  let numbersEven27: number[] = [];
+  let numbersOdd27: number[] = [];
+  for (let i = 0; i < 12; i++) {
+    numbers27.push((Number(readLine("Enter a positive number: "))));
+  }
+  numbers27.forEach(number => {
+    number % 2 === 0 ? numbersEven27.push(number) : numbersOdd27.push(number);
+  });
+  console.log("Even numbers");
+  numbersEven27.forEach(number => {
+    console.log(number);
+  });
+  console.log("Odd numbers");
+  numbersOdd27.forEach(number => {
+    console.log(number);
+  });
+}
 
-function runExerciseTwentyEight() { }
+function runExerciseTwentyEight() { console.log("Skipped") };
 
-function runExerciseTwentyNine() { }
+function runExerciseTwentyNine() { console.log("Skipped") };
 
-function runExerciseThirty() { }
+function runExerciseThirty() { console.log("Skipped") };
 
 function runExerciseThirtyOne() { }
 
@@ -336,7 +386,7 @@ function runExerciseThirtyTwo() { }
 
 function runExerciseThirtyThree() { }
 
-function runExerciseThirtyFour() { }
+function runExerciseThirtyFour() { console.log("Skipped") };
 
 /* ^^^^^^^^^^^^  Add the rest of the exercise functions above this line ^^^^^^^^^^^^ */
 
