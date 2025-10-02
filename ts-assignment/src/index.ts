@@ -297,6 +297,10 @@ function runExerciseTwentyTwo() {
 }
 
 function runExerciseTwentyThree() {
+  console.log("Skipped");
+}
+
+function runExerciseTwentyFour() {
   const numbers21: string = readLine("Enter a string of numbers (ex: 1,2,34,55,65,92): ");
   const arrayNumber21 = numbers21.split(",").map(num => Number(num));
   let average = 0;
@@ -313,8 +317,6 @@ function runExerciseTwentyThree() {
   });
   console.log(`Min = ${min}\nMax = ${max}\nAverage = ${average / arrayNumber21.length}`);
 }
-
-function runExerciseTwentyFour() { }
 
 function runExerciseTwentyFive() { }
 
