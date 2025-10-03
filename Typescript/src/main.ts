@@ -270,57 +270,123 @@
 // type MyArr2 = Array<string>;
 
 
-type Car = {
-    make: string,
-    model: string,
-    owner?: string,
-};
+// type Car = {
+//     make: string,
+//     model: string,
+//     owner?: string,
+// };
 
-type PartialCar = Partial<Car>;
-type RequiredCar = Required<PartialCar>;
+// type PartialCar = Partial<Car>;
+// type RequiredCar = Required<PartialCar>;
 
-const myObject: Record<string, string> = {
-    prop1: "Test",
-    prop2: "Hello",
-    "prop-three": "World",
-};
+// const myObject: Record<string, string> = {
+//     prop1: "Test",
+//     prop2: "Hello",
+//     "prop-three": "World",
+// };
 
-console.log(myObject[1]);
-console.log(myObject["prop1"]);
-myObject[1] = "Hello";
-console.log(myObject[1]);
-console.log(myObject["prop-three"]);
+// console.log(myObject[1]);
+// console.log(myObject["prop1"]);
+// myObject[1] = "Hello";
+// console.log(myObject[1]);
+// console.log(myObject["prop-three"]);
 
-type MyRecord = Record<string, string>;
-type MyRecord2 = { [key: string]: string };
+// type MyRecord = Record<string, string>;
+// type MyRecord2 = { [key: string]: string };
 
 
-// Remove key from object
-type CarWithoutOwner = Omit<Car, "owner">;
+// // Remove key from object
+// type CarWithoutOwner = Omit<Car, "owner">;
 
-// Make values of CarWithoutOwner readonly
-type ReadonlyCar = Readonly<CarWithoutOwner>;
+// // Make values of CarWithoutOwner readonly
+// type ReadonlyCar = Readonly<CarWithoutOwner>;
 
-type CarOwnerOnly = Pick<Car, "owner">;
-type CarMakeOnly2 = Required<Pick<Car, "owner">>;
+// type CarOwnerOnly = Pick<Car, "owner">;
+// type CarMakeOnly2 = Required<Pick<Car, "owner">>;
 
-// This is a union
-type Role = "admin" | "staff" | "user" | null;
+// // This is a union
+// type Role = "admin" | "staff" | "user" | null;
 
-// Remove type from union
-type requiredRole = Exclude<Role, null | "user">;
+// // Remove type from union
+// type requiredRole = Exclude<Role, null | "user">;
 
-function pointGenerator(x: number, y: number) {
-    return [x, y] as const;
+// function pointGenerator(x: number, y: number) {
+//     return [x, y] as const;
+// }
+
+// type Point = ReturnType<typeof pointGenerator>;
+// type PointGenerator = typeof pointGenerator;
+
+// type PointGeneratorParams = Parameters<PointGenerator>;
+
+// const point: PointGeneratorParams = [1, 5];
+// pointGenerator(...point); // "..." = spread operator (in the example spreads to x: 1, y: 5)
+
+
+const myArr: Array<string> = ["test"];
+
+interface MyArray<T> extends Array<T> { };
+type MyArray2<T> = T[];
+
+const myArray: MyArray2<number> = [3, 4, 2, 3];
+
+
+type Result<TData, TError> =
+    {
+        status: "success";
+        data: TData;
+        error?: never;
+    }
+    | {
+        status: "error";
+        data?: never;
+        error: TError;
+    }
+
+type User = {
+    email: string,
 }
 
-type Point = ReturnType<typeof pointGenerator>;
-type PointGenerator = typeof pointGenerator;
+function login(email: string, password: string): Result<User, string> {
+    if (password === "123") {
+        return {
+            status: "success",
+            data: { email },
+        };
+    }
+    return {
+        status: "error",
+        error: "Invalid password or email",
+    }
+}
 
-type PointGeneratorParams = Parameters<PointGenerator>;
+const successResult: Result<string, string> = {
+    status: "success",
+    data: "Success!",
+}
 
-const point: PointGeneratorParams = [1, 5];
-pointGenerator(...point); // "..." = spread operator (in the example spreads to x: 1, y: 5)
+const loginResult = login("test@example.com", "1234");
+if (loginResult.status === "success") {
+    console.log("Successfully signed in!");
+}
+else {
+    console.log(loginResult.error);
+}
+
+function test<T>(param1: T) {
+    return param1;
+}
+
+console.log(test<number>(42));
+console.log(test("test"));
+console.log(test(123));
+console.log(test(true));
 
 
+function createPair<T, K>(a: T, b: K): [T, K] {
+    return [a, b];
+}
 
+const point = createPair(5, 10);
+const point2 = createPair<5, 10>(5, 10);
+console.log(point);
