@@ -4,7 +4,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "start": "tsx src/main.ts"
+    "start": "tsx src/module1.ts"
   },
   "author": "",
   "license": "ISC",

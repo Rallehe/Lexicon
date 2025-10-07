@@ -323,70 +323,70 @@
 // pointGenerator(...point); // "..." = spread operator (in the example spreads to x: 1, y: 5)
 
 
-const myArr: Array<string> = ["test"];
+// const myArr: Array<string> = ["test"];
 
-interface MyArray<T> extends Array<T> { };
-type MyArray2<T> = T[];
+// interface MyArray<T> extends Array<T> { };
+// type MyArray2<T> = T[];
 
-const myArray: MyArray2<number> = [3, 4, 2, 3];
-
-
-type Result<TData, TError> =
-    {
-        status: "success";
-        data: TData;
-        error?: never;
-    }
-    | {
-        status: "error";
-        data?: never;
-        error: TError;
-    }
-
-type User = {
-    email: string,
-}
-
-function login(email: string, password: string): Result<User, string> {
-    if (password === "123") {
-        return {
-            status: "success",
-            data: { email },
-        };
-    }
-    return {
-        status: "error",
-        error: "Invalid password or email",
-    }
-}
-
-const successResult: Result<string, string> = {
-    status: "success",
-    data: "Success!",
-}
-
-const loginResult = login("test@example.com", "1234");
-if (loginResult.status === "success") {
-    console.log("Successfully signed in!");
-}
-else {
-    console.log(loginResult.error);
-}
-
-function test<T>(param1: T) {
-    return param1;
-}
-
-console.log(test<number>(42));
-console.log(test("test"));
-console.log(test(123));
-console.log(test(true));
+// const myArray: MyArray2<number> = [3, 4, 2, 3];
 
 
-function createPair<T, K>(a: T, b: K): [T, K] {
-    return [a, b];
-}
+// type Result<TData, TError> =
+//     {
+//         status: "success";
+//         data: TData;
+//         error?: never;
+//     }
+//     | {
+//         status: "error";
+//         data?: never;
+//         error: TError;
+//     }
 
-const point = createPair(5, 10);
-const point2 = createPair<5, 10>(5, 10);
-console.log(point);
+// type User = {
+//     email: string,
+// }
+
+// function login(email: string, password: string): Result<User, string> {
+//     if (password === "123") {
+//         return {
+//             status: "success",
+//             data: { email },
+//         };
+//     }
+//     return {
+//         status: "error",
+//         error: "Invalid password or email",
+//     }
+// }
+
+// const successResult: Result<string, string> = {
+//     status: "success",
+//     data: "Success!",
+// }
+
+// const loginResult = login("test@example.com", "1234");
+// if (loginResult.status === "success") {
+//     console.log("Successfully signed in!");
+// }
+// else {
+//     console.log(loginResult.error);
+// }
+
+// function test<T>(param1: T) {
+//     return param1;
+// }
+
+// console.log(test<number>(42));
+// console.log(test("test"));
+// console.log(test(123));
+// console.log(test(true));
+
+
+// function createPair<T, K>(a: T, b: K): [T, K] {
+//     return [a, b];
+// }
+
+// const point = createPair(5, 10);
+// const point2 = createPair<5, 10>(5, 10);
+// console.log(point);
