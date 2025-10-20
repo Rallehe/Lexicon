@@ -14,7 +14,7 @@ interface ExpenseData {
 }
 
 function createIdGenerator() {
-    let currentId = 1;
+    let currentId = 1; // Still stored in memory as we return a function call
     return () => {
         return currentId++;
     }
@@ -61,11 +61,11 @@ async function getAmountInput(): Promise<number> {
         message: "Amount: ",
         required: true,
         validate(value) {
-            const parsedValue = parseFloat(value);
-            return isNaN(parsedValue) ? `Provide a valid number` : true;
+            const parsedValue = Number.parseFloat(value);
+            return Number.isNaN(parsedValue) ? `Provide a valid number` : true;
         },
     });
-    return parseFloat(amountStr.replace(",", "."));
+    return Number.parseFloat(amountStr.replace(",", "."));
 }
 
 async function getDescriptionInput(): Promise<string> {

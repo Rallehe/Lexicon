@@ -4,7 +4,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "start": "tsx src/04-arrays-tuples.ts"
+    "start": "tsx Exercises1/08-utility-types.ts"
   },
   "author": "",
   "license": "ISC",
