@@ -121,7 +121,7 @@ const prisma = new PrismaClient({
 //     orderBy: {
 //         createdAt: "desc",
 //     },
-//     skip: numOfPageResults * (page - 1), 
+//     skip: numOfPageResults * (page - 1),
 //     take: numOfPageResults,
 // });
 
@@ -352,21 +352,40 @@ const prisma = new PrismaClient({
 
 // console.log(createdArticle);
 
-prisma.author.update({
-    where: {
-        id: "",
-    },
-    data: {
-        name: "Some name",
-        articles: {
-            updateMany :{
-                where: {
-                    status: "DRAFT"
-                },
-                data: {
-                    updatedAt: new Date(),
-                }
-            },
-        }
-    }
-})
+// prisma.author.update({
+//     where: {
+//         id: "",
+//     },
+//     data: {
+//         name: "Some name",
+//         articles: {
+//             updateMany :{
+//                 where: {
+//                     status: "DRAFT"
+//                 },
+//                 data: {
+//                     updatedAt: new Date(),
+//                 }
+//             },
+//         }
+//     }
+// })
+
+
+// console.log(await prisma.$queryRaw`select * from "_ArticleToCategory"`);
+
+// console.log(
+//     await prisma.category.findMany({
+//         include: {
+//             articles: true,
+//         },
+//         where: {
+//             name: "local",
+//             articles: {
+//                 some: {
+//                     status: "PUBLISHED"
+//                 }
+//             }
+//         }
+//     })
+// )

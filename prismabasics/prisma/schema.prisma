@@ -45,10 +45,21 @@ model Article {
 
   //////////////////////////////////////////////////
   author   Author? @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
-  authorId String?  @map("author_id") //Foreign key
+  authorId String? @map("author_id") //Foreign key
   /////////////////////////////////////////////////
 
+  categories Category[] // Array on both sides creates many to many relation
+
   @@map("articles")
+}
+
+model Category {
+  id   String @id @default(nanoid())
+  name String @unique
+
+  articles Article[] // Array on both sides creates many to many relation
+
+  @@map("categories")
 }
 
 model Author {
@@ -61,3 +72,34 @@ model Author {
 
   @@map("authors")
 }
+
+
+/////////////////////////////////////////////
+//Creating many to many relation without simple prisma syntax
+model Movie {
+  id    String @id @default(nanoid())
+  title String
+  releaseDate DateTime?
+  description String
+
+  movieToGenres MovieToGenre[]
+
+  @@map("movies")
+}
+
+model MovieToGenre {
+  movieId String
+  movie Movie @relation(fields: [movieId], references: [id], onDelete: Cascade)
+  genreId String
+  genre Genre @relation(fields: [genreId], references: [id], onDelete: Cascade)
+
+  @@id([movieId, genreId])
+}
+
+model Genre {
+  id   String @id @default(nanoid())
+  name String @unique
+
+  movieToGenres MovieToGenre[]
+}
+/////////////////////////////////////////////
