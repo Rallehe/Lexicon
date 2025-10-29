@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// model Movie {
+//   id          Int       @id @default(autoincrement())
+//   title       String
+//   description String    @default("")
+//   runtime     Int       @default(0)
+//   archived    Boolean   @default(false)
+//   releasedAt  DateTime? @map("released_at")
+//   cratedAt    DateTime  @default(now()) @map("created_at")
+//   updatedAt   DateTime  @updatedAt @map("updated_at") // Updated automatically if data is updated through prisma, not when done in postgres
+
+//   @@map("movie")
+// }
+
+// model Genre {
+//   id   String @id @default(cuid()) //String id is also set on prisma level
+//   name String @unique
+
+//   @@map("genre")
+// }
+
+enum ArticleStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model Article {
+  id        String        @id @default(cuid())
+  title     String
+  content   String
+  views     Int           @default(0)
+  status    ArticleStatus @default(DRAFT)
+  createdAt DateTime      @default(now()) @map("created_at")
+  updatedAt DateTime      @updatedAt @map("updated_at")
+
+  //////////////////////////////////////////////////
+  author   Author? @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  authorId String?  @map("author_id") //Foreign key
+  /////////////////////////////////////////////////
+
+  @@map("articles")
+}
+
+model Author {
+  id    String @id @default(nanoid())
+  name  String
+  email String
+
+  //One to many relation
+  articles Article[]
+
+  @@map("authors")
+}

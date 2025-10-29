@@ -1,0 +1,20 @@
+{
+  "name": "prismabasics",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsx main.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "^6.17.1",
+    "@types/node": "^24.9.1",
+    "prisma": "^6.17.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}
