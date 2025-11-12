@@ -3,21 +3,23 @@
 import { ComponentProps } from "react";
 
 type Props = ComponentProps<"div"> & {
-    text: string;
+    alertText: string;
+    buttonText: "Success" | "Warning" | "Error";
+    buttonColor: "bg-green-500" | "bg-yellow-500" | "bg-red-500";
 };
 
-export default function MyAlert({ text, ...props }: Props) {
+export default function MyAlert({ alertText, buttonText, buttonColor, ...props }: Props) {
     function handleClick() {
-        alert(text);
+        alert(alertText);
     }
 
     return (
         <div {...props}>
             <button
                 onClick={handleClick}
-                className={`text-black px-3 py-1 rounded bg-white`}
+                className={`text-black px-3 py-1 rounded ${buttonColor}`}
             >
-                Click me!
+                {buttonText}
             </button>
         </div>
     );

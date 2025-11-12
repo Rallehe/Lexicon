@@ -12,9 +12,9 @@ export default function Home() {
       </h2>
       <IncrementButton text="Increment by 1"></IncrementButton>
       <IncrementButton text="Increment by 2" incrementBy={2}></IncrementButton>
-      <MyAlert text="Success!" />
-      <MyAlert text="Warning!" />
-      <MyAlert text="Error!" />
+      <MyAlert buttonText="Success" alertText="Success!" buttonColor="bg-green-500" />
+      <MyAlert buttonText="Warning" alertText="Warning!" buttonColor="bg-yellow-500" />
+      <MyAlert buttonText="Error" alertText="Error!" buttonColor="bg-red-500" />
     </div>
   )
 }
