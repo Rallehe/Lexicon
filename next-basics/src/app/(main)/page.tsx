@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import Link from "next/link";
 
 // Adding 'asChild' allows us to add a tag to the button, in this example adding <Link> inside button (making the whole button a Link tag)
 export default function Home() {
@@ -8,11 +7,6 @@ export default function Home() {
     <>
 
       <h1 className="font-bold text-4xl mb-4">Home</h1>
-      <Button type="button" variant={"outline"} size={"lg"} className="text-lg font-bold" asChild>
-        <Link href={"/about"}>
-          About!
-        </Link>
-      </Button>
 
       <div className="mt-2">
         <Dialog>
