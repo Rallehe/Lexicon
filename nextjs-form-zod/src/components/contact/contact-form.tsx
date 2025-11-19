@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { Field, FieldError, FieldGroup, FieldLabel } from "../ui/field";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import { addContact } from "@/actions/action";
 
 const formSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters."),
@@ -24,9 +25,10 @@ export default function ContactForm() {
     });
 
     async function onSubmit(data: z.infer<typeof formSchema>) {
+        await addContact(data);
         toast.success("Contact added", {
             description: `Name: ${data.name}, Email: ${data.email}.`,
-        })
+        });
     }
 
     return (
