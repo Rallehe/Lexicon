@@ -39,10 +39,17 @@ export default function AddBooks() {
     });
 
     async function onSubmit(data: z.infer<typeof formSchema>) {
-        await addBook(data);
-        toast.success("Book Added", {
-            description: `Title: ${data.title}, Author: ${data.author}.`,
-        });
+        try {
+
+            await addBook(data);
+            toast.success("Book Added", {
+                description: `Title: ${data.title}, Author: ${data.author}.`,
+            });
+        }
+        catch(error: unknown) {
+            if (error instanceof Error)
+            toast.error(error.message);
+        }
     }
 
 

@@ -1,5 +1,6 @@
 "use server"
 
+import { Prisma } from "@/generated/prisma/client";
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import z from "zod";
@@ -20,12 +21,21 @@ const formSchema = z.object({
 
 export async function addBook(input: z.infer<typeof formSchema>) {
     const data = formSchema.parse(input);
-    await prisma.book.create({
-        data: {
-            ...data,
-            createdAt: new Date(),
-            updatedAt: new Date(),
+    try {
+
+        await prisma.book.create({
+            data: {
+                ...data,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            }
+        });
+        revalidatePath("/");
+    }
+    catch (error) {
+        if (error instanceof Prisma.PrismaClientKnownRequestError) {
+            throw new Error(`A book with the same ISBN already exists.`);
         }
-    });
-    revalidatePath("/");
+        throw error;
+    }
 }
