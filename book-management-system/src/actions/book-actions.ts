@@ -15,8 +15,7 @@ const formSchema = z.object({
             (date) => date <= new Date(),
             { message: "The publication date cannot be in the future." }
         ),
-    isbn: z.string().regex(new RegExp(/^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/), "Invalid ISBN"),
-
+    isbn: z.string().min(13).regex(new RegExp(/^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/), "Invalid ISBN, it must follow the ISBN-13 format"),
 });
 
 export async function addBook(input: z.infer<typeof formSchema>) {
