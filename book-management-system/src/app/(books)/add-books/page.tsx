@@ -15,13 +15,18 @@ import { z } from "zod";
 const formSchema = z.object({
     title: z.string().min(2, "Title must be at least 2 characters."),
     author: z.string().min(2, "Author must be at least 2 characters."),
-    published: z.date(),
-    isbn: z.string().regex(new RegExp(/^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/)),
+    published: z.date({
+        error: "Please select a publication date.",
+    })
+        .refine(
+            (date) => date <= new Date(),
+            { message: "The publication date cannot be in the future." }
+        ),
+    isbn: z.string().regex(new RegExp(/^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/), "Invalid ISBN"),
 });
 
 export default function AddBooks() {
     const [open, setOpen] = React.useState(false)
-    const [date, setDate] = React.useState<Date | undefined>(undefined)
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -84,7 +89,7 @@ export default function AddBooks() {
                             control={form.control}
                             render={({ field, fieldState }) => (
                                 <Field data-invalid={fieldState.invalid}>
-                                    <FieldLabel htmlFor="add-books-isbn">Isbn</FieldLabel>
+                                    <FieldLabel htmlFor="add-books-isbn">ISBN</FieldLabel>
                                     <Input
                                         {...field}
                                         id="add-books-isbn"
@@ -110,17 +115,17 @@ export default function AddBooks() {
                                                     id="published"
                                                     className="w-48 justify-between font-normal"
                                                 >
-                                                    {date ? date.toLocaleDateString() : "Select date"}
+                                                    {field.value ? field.value.toLocaleDateString() : "Select date"}
                                                     <ChevronDownIcon />
                                                 </Button>
                                             </PopoverTrigger>
                                             <PopoverContent className="w-auto overflow-hidden p-0" align="start">
                                                 <Calendar
                                                     mode="single"
-                                                    selected={date}
+                                                    selected={field.value}
                                                     captionLayout="dropdown"
                                                     onSelect={(date) => {
-                                                        setDate(date)
+                                                        field.onChange(date)
                                                         setOpen(false)
                                                     }}
                                                 />
