@@ -6,8 +6,8 @@ import { revalidatePath } from "next/cache";
 import z from "zod";
 
 const formSchema = z.object({
-    title: z.string().min(2, "Title must be at least 2 characters."),
-    author: z.string().min(2, "Author must be at least 2 characters."),
+    title: z.string().min(1, "Title must be at least 1 characters."),
+    author: z.string().min(1, "Author must be at least 1 characters."),
     published: z.date({
         error: "Please select a publication date.",
     })
