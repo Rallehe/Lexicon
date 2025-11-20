@@ -1,5 +1,6 @@
 "use client";
 
+import { addBook } from "@/actions/book-actions";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
@@ -38,8 +39,8 @@ export default function AddBooks() {
     });
 
     async function onSubmit(data: z.infer<typeof formSchema>) {
-        // await addContact(data);
-        toast.success("Contact added", {
+        await addBook(data);
+        toast.success("Book Added", {
             description: `Title: ${data.title}, Author: ${data.author}.`,
         });
     }
