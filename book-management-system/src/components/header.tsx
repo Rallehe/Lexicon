@@ -4,7 +4,7 @@ import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuL
 export default function Header() {
     return (
         <NavigationMenu>
-            <NavigationMenuList className="flex-wrap">
+            <NavigationMenuList>
                 <NavigationMenuItem>
                     <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                         <Link href="/">Docs</Link>
