@@ -22,7 +22,6 @@ const formSchema = z.object({
 export async function addBook(input: z.infer<typeof formSchema>) {
     const data = formSchema.parse(input);
     try {
-
         await prisma.book.create({
             data: {
                 ...data,
@@ -38,4 +37,12 @@ export async function addBook(input: z.infer<typeof formSchema>) {
         }
         throw error;
     }
+}
+
+export async function removeBook(id: string) {
+    await prisma.book.delete({
+        where: {
+            id: id,
+        }
+    })
 }
