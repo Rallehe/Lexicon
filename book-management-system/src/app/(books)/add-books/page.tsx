@@ -45,6 +45,7 @@ export default function AddBooks() {
             toast.success("Book Added", {
                 description: `Title: ${data.title}, Author: ${data.author}.`,
             });
+            form.reset();
         }
         catch(error: unknown) {
             if (error instanceof Error)
