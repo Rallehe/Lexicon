@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <div className="relative">
+        <div className="relative border-t border-t-black">
             <footer className="justify-center font-bold text-center p-3 dark:text-white">
                 <div className="bottom">
 
