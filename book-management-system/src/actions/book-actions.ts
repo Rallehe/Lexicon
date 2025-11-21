@@ -39,10 +39,50 @@ export async function addBook(input: z.infer<typeof formSchema>) {
 }
 
 export async function removeBook(id: string) {
-    await prisma.book.delete({
-        where: {
-            id: id,
+    try {
+        await prisma.book.delete({
+            where: {
+                id: id,
+            }
+        });
+    } catch (error) {
+        if (error instanceof Prisma.PrismaClientKnownRequestError) {
+            throw new Error(`Couldn't delete book with specified ID.`);
         }
-    });
+        throw error;
+    }
     revalidatePath("/");
+}
+
+export async function fetchBook(id: string) {
+    try {
+        await prisma.book.findUnique({
+            where: {
+                id: id
+            }
+        })
+    }
+    catch (error) {
+        if (error instanceof Prisma.PrismaClientKnownRequestError) {
+            throw new Error(`Couldn't fetch book with specified ID.`);
+        }
+        throw error;
+    }
+    revalidatePath("/");
+
+    // export async function updateBook(id: string) {
+        // try {
+        //     await prisma.book.update({
+        //         where: {
+        //             id: data?.id
+        //         },
+        //         data: {
+        //             author: ""
+        //         }
+        //     })
+        // }
+        // catch (error) {
+
+        // }
+    // }
 }

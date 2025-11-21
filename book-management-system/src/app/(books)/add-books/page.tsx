@@ -14,8 +14,8 @@ import { toast } from "sonner";
 import { z } from "zod";
 
 const formSchema = z.object({
-    title: z.string().min(2, "Title must be at least 2 characters."),
-    author: z.string().min(2, "Author must be at least 2 characters."),
+    title: z.string().min(1, "Title must be at least 1 characters."),
+    author: z.string().min(1, "Author must be at least 1 characters."),
     published: z.date({
         error: "Please select a publication date.",
     })
@@ -23,7 +23,7 @@ const formSchema = z.object({
             (date) => date <= new Date(),
             { message: "The publication date cannot be in the future." }
         ),
-    isbn: z.string().regex(new RegExp(/^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/), "Invalid ISBN"),
+    isbn: z.string().max(13).regex(new RegExp(/^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/), "Invalid ISBN, must follow ISBN-13 format"),
 });
 
 export default function AddBooks() {

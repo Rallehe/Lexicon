@@ -11,8 +11,13 @@ type Props = {
 }
 
 async function removeSpecifiedBook(bookId: string) {
-    await removeBook(bookId)
-    toast.success("Book Removed");
+    try {
+        await removeBook(bookId)
+        toast.success("Book Removed");
+    } catch (error: unknown) {
+        if (error instanceof Error)
+            toast.error(error.message);
+    }
     redirect("/");
 }
 
