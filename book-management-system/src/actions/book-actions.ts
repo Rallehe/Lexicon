@@ -43,5 +43,6 @@ export async function removeBook(id: string) {
         where: {
             id: id,
         }
-    })
+    });
+    revalidatePath("/");
 }

@@ -1,3 +1,6 @@
+import { removeBook } from "@/actions/book-actions";
+import RemoveBookButton from "@/components/remove-book-button";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription } from "@/components/ui/card";
 import { prisma } from "@/lib/prisma";
 
@@ -12,7 +15,13 @@ export default async function BookDetails(props: Readonly<PageProps<"/books/[boo
     });
 
     if (!book) {
-        return <p className="text-white text-3xl">Book not found</p>;
+        return (
+            <div className="flex items-center justify-center">
+                <p className="text-black dark:text-white text-3xl font-bold">
+                    Book not found
+                </p>
+            </div>
+        )
     }
 
     return (
@@ -40,6 +49,10 @@ export default async function BookDetails(props: Readonly<PageProps<"/books/[boo
                         </CardDescription>
                     </div>
                 </CardContent>
+                <div className="flex flex-2 items-center justify-center gap-x-4">
+                    <Button>Update</Button>
+                    <RemoveBookButton bookId={bookId} />
+                </div>
             </Card>
         </div >
     )
