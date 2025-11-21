@@ -1,12 +1,20 @@
 import { Card, CardContent, CardDescription } from "@/components/ui/card";
 import { prisma } from "@/lib/prisma";
 
-export default async function BookDetails(id: string) {
+
+
+export default async function BookDetails(props: Readonly<PageProps<"/books/[bookId]">>) {
+    const bookId = (await props.params).bookId;
     const book = await prisma.book.findUnique({
         where: {
-            id: "cmi7rtk8k0008it6w6qrgnan4"
+            id: bookId,
         },
-    })
+    });
+
+    if (!book) {
+        return <p className="text-white text-3xl">Book not found</p>;
+    }
+
     return (
         <div className="flex items-center justify-center">
             <Card className="mt-2 max-w-3xl">
