@@ -23,7 +23,9 @@ const formSchema = z.object({
             (date) => date <= new Date(),
             { message: "The publication date cannot be in the future." }
         ),
-    isbn: z.string().max(13).regex(new RegExp(/^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/), "Invalid ISBN, must follow ISBN-13 format"),
+    isbn: z.string().transform((val) => val.replaceAll('-', "")).refine((val) => /^\d{13}$/.test(val), {
+            message: "Invalid ISBN, must be exactly 13 digits",
+        }),
 });
 
 export default function AddBooks() {
@@ -40,16 +42,15 @@ export default function AddBooks() {
 
     async function onSubmit(data: z.infer<typeof formSchema>) {
         try {
-
             await addBook(data);
             toast.success("Book Added", {
                 description: `Title: ${data.title}, Author: ${data.author}.`,
             });
             form.reset();
         }
-        catch(error: unknown) {
+        catch (error: unknown) {
             if (error instanceof Error)
-            toast.error(error.message);
+                toast.error(error.message);
         }
     }
 
