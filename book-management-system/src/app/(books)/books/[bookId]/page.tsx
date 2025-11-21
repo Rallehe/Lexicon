@@ -1,4 +1,3 @@
-import { removeBook } from "@/actions/book-actions";
 import RemoveBookButton from "@/components/remove-book-button";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription } from "@/components/ui/card";
