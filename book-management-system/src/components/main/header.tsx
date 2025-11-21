@@ -10,7 +10,7 @@ export default function Header() {
                         <Link href={"/"}>Home</Link>
                     </Button>
                     <Button asChild variant={"link"} className="bg-transparent text-3xl text-black font-bold dark:text-white">
-                        <Link href={"/add-books"}>Add Book</Link>
+                        <Link href={"/add-books"}>Create New Book</Link>
                     </Button>
                     <Button asChild variant={"link"} className="bg-transparent text-3xl text-black font-bold dark:text-white">
                         <Link href={"/"}>About</Link>
