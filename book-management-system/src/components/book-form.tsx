@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ChevronDownIcon } from "lucide-react";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
