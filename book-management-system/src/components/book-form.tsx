@@ -9,10 +9,11 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ChevronDownIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
-import React from "react";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
+import { Spinner } from "./ui/spinner";
 
 const formSchema = z.object({
     title: z.string().min(1, "Title must be at least 1 characters."),
@@ -41,8 +42,9 @@ type Props = {
 }
 
 export default function BooksForm({ submit, data }: Readonly<Props>) {
+    const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
-    const [open, setOpen] = React.useState(false)
+    const [open, setOpen] = useState(false)
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -58,18 +60,22 @@ export default function BooksForm({ submit, data }: Readonly<Props>) {
             switch (submit) {
                 case "save":
                     {
+                        setIsLoading(true);
                         const newBook = await addBook(formData);
                         toast.success("Book Added", {
                             description: `Title: ${formData.title}, Author: ${formData.author}.`,
                         });
+                        setIsLoading(false);
                         router.push(`/books/${newBook.id}`);
                         break;
                     }
-                case "update":
+                    case "update":
+                    setIsLoading(true);
                     await updateBook(data!.id, formData);
                     toast.success("Book Updated", {
                         description: `Title: ${formData.title}, Author: ${formData.author}.`,
                     });
+                    setIsLoading(false);
                     router.push(`/books/${data!.id}`);
             }
         }
@@ -175,7 +181,7 @@ export default function BooksForm({ submit, data }: Readonly<Props>) {
                         />
                     </FieldGroup>
                     <div className="mt-4">
-                        <Button type="submit" form="books-form">{submit === "save" ? "Save Book" : "Update Book"}</Button>
+                        <Button type="submit" form="books-form">{submit === "save" ? "Save Book" : "Update Book"}{isLoading ? <Spinner /> : ""}</Button>
                     </div>
                 </form>
             </div>
