@@ -21,14 +21,14 @@ const formSchema = z.object({
 export async function addBook(input: z.infer<typeof formSchema>) {
     const data = formSchema.parse(input);
     try {
-        await prisma.book.create({
+        const book = await prisma.book.create({
             data: {
                 ...data,
                 createdAt: new Date(),
                 updatedAt: new Date(),
             }
         });
-        revalidatePath("/");
+        return book;
     }
     catch (error) {
         if (error instanceof Prisma.PrismaClientKnownRequestError) {

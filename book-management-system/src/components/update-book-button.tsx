@@ -10,7 +10,7 @@ type Props = {
 
 export default function updateBookButton({ bookId }: Props) {
     return (
-        <Button asChild variant={"default"}>
+        <Button asChild>
             <Link href={`/update-books/${bookId}`}>Update</Link>
         </Button>
     )

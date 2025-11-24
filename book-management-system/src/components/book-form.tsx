@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ChevronDownIcon } from "lucide-react";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -41,6 +41,7 @@ type Props = {
 }
 
 export default function BooksForm({ submit, data }: Readonly<Props>) {
+    const router = useRouter();
     const [open, setOpen] = React.useState(false)
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -56,20 +57,20 @@ export default function BooksForm({ submit, data }: Readonly<Props>) {
         try {
             switch (submit) {
                 case "save":
-                    await addBook(formData);
-                    toast.success("Book Added", {
-                        description: `Title: ${formData.title}, Author: ${formData.author}.`,
-                    });
-                    form.reset();
-                    break;
+                    {
+                        const newBook = await addBook(formData);
+                        toast.success("Book Added", {
+                            description: `Title: ${formData.title}, Author: ${formData.author}.`,
+                        });
+                        router.push(`/books/${newBook.id}`);
+                        break;
+                    }
                 case "update":
                     await updateBook(data!.id, formData);
                     toast.success("Book Updated", {
                         description: `Title: ${formData.title}, Author: ${formData.author}.`,
                     });
-                    redirect(``);
-                    
-                    break;
+                    router.push(`/books/${data!.id}`);
             }
         }
         catch (error: unknown) {
@@ -174,7 +175,7 @@ export default function BooksForm({ submit, data }: Readonly<Props>) {
                         />
                     </FieldGroup>
                     <div className="mt-4">
-                        <Button type="submit" form="books-form">Save Book</Button>
+                        <Button type="submit" form="books-form">{submit === "save" ? "Save Book" : "Update Book"}</Button>
                     </div>
                 </form>
             </div>
