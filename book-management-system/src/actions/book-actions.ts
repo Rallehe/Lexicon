@@ -56,11 +56,12 @@ export async function removeBook(id: string) {
 
 export async function fetchBook(id: string) {
     try {
-        await prisma.book.findUnique({
+        const bookData = await prisma.book.findUnique({
             where: {
                 id: id
             }
         })
+        return bookData;
     }
     catch (error) {
         if (error instanceof Prisma.PrismaClientKnownRequestError) {
@@ -68,21 +69,28 @@ export async function fetchBook(id: string) {
         }
         throw error;
     }
+}
+
+
+
+export async function updateBook(id: string, input: z.infer<typeof formSchema>) {
+    const data = formSchema.parse(input);
+    try {
+        await prisma.book.update({
+            where: {
+                id: id,
+            },
+            data: {
+                ...data,
+                updatedAt: new Date(),
+            }
+        })
+    }
+    catch (error) {
+        if (error instanceof Prisma.PrismaClientKnownRequestError) {
+            throw new Error(`Couldn't update book with specified ID.`);
+        }
+        throw error;
+    }
     revalidatePath("/");
-
-    // export async function updateBook(id: string) {
-        // try {
-        //     await prisma.book.update({
-        //         where: {
-        //             id: data?.id
-        //         },
-        //         data: {
-        //             author: ""
-        //         }
-        //     })
-        // }
-        // catch (error) {
-
-        // }
-    // }
 }

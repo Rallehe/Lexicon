@@ -1,17 +1,13 @@
+import { fetchBook } from "@/actions/book-actions";
 import RemoveBookButton from "@/components/remove-book-button";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription } from "@/components/ui/card";
-import { prisma } from "@/lib/prisma";
+import UpdateBookButton from "@/components/update-book-button";
 
 
 
 export default async function BookDetails(props: Readonly<PageProps<"/books/[bookId]">>) {
     const bookId = (await props.params).bookId;
-    const book = await prisma.book.findUnique({
-        where: {
-            id: bookId,
-        },
-    });
+    const book = await fetchBook(bookId);
 
     if (!book) {
         return (
@@ -49,7 +45,7 @@ export default async function BookDetails(props: Readonly<PageProps<"/books/[boo
                     </div>
                 </CardContent>
                 <div className="flex flex-2 items-center justify-center gap-x-4">
-                    <Button>Update</Button>
+                    <UpdateBookButton bookId={bookId}/>
                     <RemoveBookButton bookId={bookId} />
                 </div>
             </Card>

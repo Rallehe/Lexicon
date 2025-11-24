@@ -12,9 +12,7 @@ export default function Header() {
                     <Button asChild variant={"link"} className="bg-transparent text-3xl text-black font-bold dark:text-white">
                         <Link href={"/add-books"}>Create New Book</Link>
                     </Button>
-                    <Button asChild variant={"link"} className="bg-transparent text-3xl text-black font-bold dark:text-white">
-                        <Link href={"/"}>About</Link>
-                    </Button>
+                   
                 </div>
             </header>
         </div>
