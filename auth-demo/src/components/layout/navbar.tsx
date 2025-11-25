@@ -14,8 +14,13 @@ export default function NavBar() {
     return (
         <div className="bg-amber-800">
             <div className="flex container justify-between p-4">
-                <div>
+                <div className="flex gap-2">
                     <p>Better Auth Demo</p>
+                    <Button asChild>
+                        <Link href={"/posts"}>
+                            Posts
+                        </Link>
+                    </Button>
                 </div>
                 <div className="flex gap-2">
                     {session.data === null ?
@@ -32,15 +37,22 @@ export default function NavBar() {
                             </Button>
                         </>
                         :
-                        <Button disabled={isLoading} onClick={async () => {
-                            setIsLoading(true);
-                            await authClient.signOut();
-                            toast("Success", {
-                                description: "You signed out!"
-                            });
-                            setIsLoading(false);
-                            router.refresh();
-                        }}>{isLoading ? "Signing Out..." : "Sign Out"}</Button>
+                        <>
+                            <Button asChild>
+                                <Link href={"/create-post"}>
+                                    Create Post
+                                </Link>
+                            </Button>
+                            <Button disabled={isLoading} onClick={async () => {
+                                setIsLoading(true);
+                                await authClient.signOut();
+                                toast("Success", {
+                                    description: "You signed out!"
+                                });
+                                setIsLoading(false);
+                                router.refresh();
+                            }}>{isLoading ? "Signing Out..." : "Sign Out"}</Button>
+                        </>
                     }
                 </div>
             </div>

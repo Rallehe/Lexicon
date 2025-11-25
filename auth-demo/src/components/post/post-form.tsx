@@ -1,9 +1,9 @@
 "use client"
 
+import { createPost } from "@/action/post";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { authClient } from "@/lib/auth-client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -12,12 +12,13 @@ import { toast } from "sonner";
 import z from "zod";
 
 
+
 const formSchema = z.object({
-    email: z.email("Invalid email"),
-    password: z.string().min(5, "Password must be at least 8 characters")
+    title: z.string(),
+    content: z.string(),
 });
 
-type SignInValues = z.infer<typeof formSchema>;
+type PostValues = z.infer<typeof formSchema>;
 
 export default function Page() {
     const router = useRouter();
@@ -25,28 +26,19 @@ export default function Page() {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            email: "",
-            password: "",
+            title: "",
+            content: "",
         }
     })
 
-    async function onSubmit(values: SignInValues) {
+    async function onSubmit(values: PostValues) {
         setIsLoading(true);
         try {
-            const result = await authClient.signIn.email({
-                email: values.email,
-                password: values.password,
+            await createPost(values.title, values.content,);
+            toast("Success", {
+                description: "Post successfully added",
             });
-            if (result.error) {
-                toast("Error", {
-                    description: result.error.message || "Failed to sign in",
-                });
-            } else {
-                toast("Success", {
-                    description: "Signed in successfully",
-                });
-                router.push("/");
-            }
+            router.push("/");
         } catch (error) {
             if (error) {
                 toast("Error", {
@@ -62,9 +54,9 @@ export default function Page() {
         <div className="flex min-h-screen items-center justify-center">
             <div className="w-full max-w-md space-y-6 px-4">
                 <div className="space-y-2 text-center">
-                    <h1 className="text-3xl font-bold">Sign In</h1>
+                    <h1 className="text-3xl font-bold">Add Post</h1>
                     <p className="text-muted-foreground">
-                        Enter your credentials to access your account
+                        Enter post title and content
                     </p>
                 </div>
 
@@ -72,14 +64,14 @@ export default function Page() {
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                         <FormField
                             control={form.control}
-                            name="email"
+                            name="title"
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Email</FormLabel>
                                     <FormControl>
                                         <Input
-                                            type="email"
-                                            placeholder="you@example.com"
+                                            type="text"
+                                            placeholder="Post title"
                                             disabled={isLoading}
                                             {...field}
                                         />
@@ -91,16 +83,16 @@ export default function Page() {
 
                         <FormField
                             control={form.control}
-                            name="password"
+                            name="content"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Password</FormLabel>
+                                    <FormLabel>Content</FormLabel>
                                     <FormControl>
-                                        <Input 
-                                        type="password" 
-                                        placeholder="••••••••"
-                                        disabled={isLoading}
-                                        {...field} />
+                                        <Input
+                                            type="text"
+                                            placeholder="Post content"
+                                            disabled={isLoading}
+                                            {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -108,7 +100,7 @@ export default function Page() {
                         />
 
                         <Button type="submit" className="w-full" disabled={isLoading}>
-                            {isLoading ? "Signing in..." : "Sign In"}
+                            {isLoading ? "Creating post..." : "Create post"}
                         </Button>
                     </form>
                 </Form>
