@@ -1,11 +1,14 @@
 "use client"
 
-import Link from "next/link"
-import { Button } from "../ui/button"
 import { authClient } from "@/lib/auth-client";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Button } from "../ui/button";
+import { toast } from "sonner";
+import { useState } from "react";
 
 export default function NavBar() {
+    const [isLoading, setIsLoading] = useState(false);
     const session = authClient.useSession();
     const router = useRouter();
     return (
@@ -29,10 +32,15 @@ export default function NavBar() {
                             </Button>
                         </>
                         :
-                        <Button onClick={async () => {
+                        <Button disabled={isLoading} onClick={async () => {
+                            setIsLoading(true);
                             await authClient.signOut();
+                            toast("Success", {
+                                description: "You signed out!"
+                            });
+                            setIsLoading(false);
                             router.refresh();
-                        }}>Sign Out</Button>
+                        }}>{isLoading ? "Signing Out..." : "Sign Out"}</Button>
                     }
                 </div>
             </div>

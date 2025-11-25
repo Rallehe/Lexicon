@@ -1,24 +1,27 @@
 "use client"
 
-import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
-import { authClient } from "@/lib/auth-client";
-import { Controller, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import z from "zod";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { authClient } from "@/lib/auth-client";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Spinner } from "@/components/ui/spinner";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import z from "zod";
 
 
 
 const formSchema = z.object({
-    email: z.email(),
-    password: z.string().min(8, "Password must be at least 8 characters")
+    email: z.email("Invalid email"),
+    password: z.string().min(5, "Password must be at least 8 characters")
 });
 
+type SignInValues = z.infer<typeof formSchema>;
 
 export default function Page() {
+    const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -28,62 +31,89 @@ export default function Page() {
         }
     })
 
-    async function onSubmit(formData: z.infer<typeof formSchema>) {
+    async function onSubmit(values: SignInValues) {
         setIsLoading(true);
-        await authClient.signIn.email({
-            email: formData.email,
-            password: formData.password,
-            callbackURL: "/",
-        });
-        setIsLoading(false);
+        try {
+            const result = await authClient.signIn.email({
+                email: values.email,
+                password: values.password,
+            });
+            if (result.error) {
+                toast("Error", {
+                    description: result.error.message || "Failed to sign in",
+                });
+            } else {
+                toast("Success", {
+                    description: "Signed in successfully",
+                });
+                router.push("/");
+            }
+        } catch (error) {
+            if (error) {
+                toast("Error", {
+                    description: "An unexpected error occurred",
+                });
+            }
+        } finally {
+            setIsLoading(false);
+        }
     }
 
     return (
-        <div className="flex items-center justify-center">
-            <div className="w-full max-w-md">
-                <form id="signin-form" onSubmit={form.handleSubmit(onSubmit)}>
-                    <FieldGroup>
-                        <Controller
+        <div className="flex min-h-screen items-center justify-center">
+            <div className="w-full max-w-md space-y-6 px-4">
+                <div className="space-y-2 text-center">
+                    <h1 className="text-3xl font-bold">Sign In</h1>
+                    <p className="text-muted-foreground">
+                        Enter your credentials to access your account
+                    </p>
+                </div>
+
+                <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                        <FormField
+                            control={form.control}
                             name="email"
-                            control={form.control}
-                            render={({ field, fieldState }) => (
-                                <Field data-invalid={fieldState.invalid}>
-                                    <FieldLabel htmlFor="add-user-email">Email</FieldLabel>
-                                    <Input
-                                        {...field}
-                                        id="add-user-email"
-                                        aria-invalid={fieldState.invalid}
-                                    />
-                                    {fieldState.invalid && (
-                                        <FieldError errors={[fieldState.error]} />
-                                    )}
-                                </Field>
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Email</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            type="email"
+                                            placeholder="you@example.com"
+                                            disabled={isLoading}
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
                             )}
                         />
-                        <Controller
+
+                        <FormField
+                            control={form.control}
                             name="password"
-                            control={form.control}
-                            render={({ field, fieldState }) => (
-                                <Field data-invalid={fieldState.invalid}>
-                                    <FieldLabel htmlFor="add-user-password">Password</FieldLabel>
-                                    <Input
-                                        {...field}
-                                        id="add-user-password"
-                                        aria-invalid={fieldState.invalid}
-                                        type="password"
-                                    />
-                                    {fieldState.invalid && (
-                                        <FieldError errors={[fieldState.error]} />
-                                    )}
-                                </Field>
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Password</FormLabel>
+                                    <FormControl>
+                                        <Input 
+                                        type="password" 
+                                        placeholder="••••••••"
+                                        disabled={isLoading}
+                                        {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
                             )}
                         />
-                    </FieldGroup>
-                    <div className="mt-4">
-                        <Button type="submit" form="signin-form">Sign In {isLoading ? <Spinner /> : ""}</Button>
-                    </div>
-                </form>
+                        
+                        <Button type="submit" className="w-full" disabled={isLoading}>
+                            {isLoading ? "Signing in..." : "Sign In"}
+                        </Button>
+                    </form>
+                </Form>
             </div>
         </div>
-    )
+    );
 }

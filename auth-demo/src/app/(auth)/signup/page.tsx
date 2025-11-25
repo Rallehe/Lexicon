@@ -1,104 +1,160 @@
-"use client"
+"use client";
 
-import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
-import { authClient } from "@/lib/auth-client";
-import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import z from "zod";
-import { Input } from "@/components/ui/input";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import { Button } from "@/components/ui/button";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast } from "sonner";
 
+const signUpSchema = z
+    .object({
+        name: z.string().min(2, "Name must be at least 2 characters"),
+        email: z.email("Invalid email address"),
+        password: z.string().min(8, "Password must be at least 8 characters"),
+        confirmPassword: z.string(),
+    })
+    .refine((data) => data.password === data.confirmPassword, {
+        message: "Passwords don't match",
+        path: ["confirmPassword"],
+    });
 
-const formSchema = z.object({
-    name: z.string().min(1, "Name must be at least one character"),
-    email: z.email(),
-    password: z.string().min(8, "Password must be at least 8 characters")
-});
+type SignUpValues = z.infer<typeof signUpSchema>;
 
+export default function SignUpPage() {
+    const router = useRouter();
+    const [isLoading, setIsLoading] = useState(false);
 
-
-
-export default function Page() {
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
+    const form = useForm<SignUpValues>({
+        resolver: zodResolver(signUpSchema),
         defaultValues: {
             name: "",
             email: "",
             password: "",
-        }
-    })
+            confirmPassword: "",
+        },
+    });
 
-    async function onSubmit(formData: z.infer<typeof formSchema>) {
-        await authClient.signUp.email({
-            name: formData.name,
-            email: formData.email,
-            password: formData.password,
-            callbackURL: "/",
-        });
+    async function onSubmit(values: SignUpValues) {
+        setIsLoading(true);
+        try {
+            const result = await authClient.signUp.email({
+                name: values.name,
+                email: values.email,
+                password: values.password,
+            });
+
+            if (result.error) {
+                toast("Error", {
+                    description: result.error.message || "Failed to sign up",
+                });
+            } else {
+                toast("Success", {
+                    description: "Account created successfully",
+                });
+                router.push("/");
+            }
+        } catch (error) {
+            if (error) {
+                toast("Error", {
+                    description: "An unexpected error occurred",
+                });
+            }
+        } finally {
+            setIsLoading(false);
+        }
     }
+
     return (
-        <div className="flex items-center justify-center">
-            <div className="w-full max-w-md">
-                <form id="signup-form" onSubmit={form.handleSubmit(onSubmit)}>
-                    <FieldGroup>
-                        <Controller
+        <div className="flex min-h-screen items-center justify-center">
+            <div className="w-full max-w-md space-y-6 px-4">
+                <div className="space-y-2 text-center">
+                    <h1 className="text-3xl font-bold">Sign Up</h1>
+                    <p className="text-muted-foreground">
+                        Create an account to get started
+                    </p>
+                </div>
+
+                <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                        <FormField
+                            control={form.control}
                             name="name"
-                            control={form.control}
-                            render={({ field, fieldState }) => (
-                                <Field data-invalid={fieldState.invalid}>
-                                    <FieldLabel htmlFor="add-user-name">Name</FieldLabel>
-                                    <Input
-                                        {...field}
-                                        id="add-user-name"
-                                        aria-invalid={fieldState.invalid}
-                                    />
-                                    {fieldState.invalid && (
-                                        <FieldError errors={[fieldState.error]} />
-                                    )}
-                                </Field>
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Name</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="John Doe" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
                             )}
                         />
-                        <Controller
+
+                        <FormField
+                            control={form.control}
                             name="email"
-                            control={form.control}
-                            render={({ field, fieldState }) => (
-                                <Field data-invalid={fieldState.invalid}>
-                                    <FieldLabel htmlFor="add-user-email">Email</FieldLabel>
-                                    <Input
-                                        {...field}
-                                        id="add-user-email"
-                                        aria-invalid={fieldState.invalid}
-                                    />
-                                    {fieldState.invalid && (
-                                        <FieldError errors={[fieldState.error]} />
-                                    )}
-                                </Field>
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Email</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            type="email"
+                                            placeholder="you@example.com"
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
                             )}
                         />
-                        <Controller
+
+                        <FormField
+                            control={form.control}
                             name="password"
-                            control={form.control}
-                            render={({ field, fieldState }) => (
-                                <Field data-invalid={fieldState.invalid}>
-                                    <FieldLabel htmlFor="add-user-password">Password</FieldLabel>
-                                    <Input
-                                        {...field}
-                                        id="add-user-password"
-                                        aria-invalid={fieldState.invalid}
-                                        type="password"
-                                    />
-                                    {fieldState.invalid && (
-                                        <FieldError errors={[fieldState.error]} />
-                                    )}
-                                </Field>
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Password</FormLabel>
+                                    <FormControl>
+                                        <Input type="password" placeholder="••••••••" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
                             )}
                         />
-                    </FieldGroup>
-                    <div className="mt-4">
-                        <Button type="submit" form="signup-form">Sign Up</Button>
-                    </div>
-                </form>
+
+                        <FormField
+                            control={form.control}
+                            name="confirmPassword"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Confirm Password</FormLabel>
+                                    <FormControl>
+                                        <Input type="password" placeholder="••••••••" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        <Button type="submit" className="w-full" disabled={isLoading}>
+                            {isLoading ? "Creating account..." : "Sign Up"}
+                        </Button>
+                    </form>
+                </Form>
             </div>
         </div>
-    )
+    );
 }
+
